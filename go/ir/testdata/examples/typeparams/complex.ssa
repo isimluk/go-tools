@@ -1,0 +1,30 @@
+# Name: command-line-arguments.fn
+# Package: command-line-arguments
+func fn[A T[C], B *[4]A, C ~int8|~int16](x B):
+b0: # entry
+	t1 = Const <int> {0}
+	t2 = Const <C> {0}
+	t3 = Parameter <B> {x}
+	t4 = IndexAddr <*A> t3 t1
+	t5 = FieldAddr <*C> [0] (F) t4
+	Store {C} t5 t2
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: command-line-arguments.init
+# Package: command-line-arguments
+# Synthetic: package initializer
+func init():
+b0: # entry
+	t1 = Const <bool> {true}
+	t2 = Load <bool> init$guard
+	If t2 → b1 b2
+
+b1: ← b0 b2 # exit
+	Return
+
+b2: ← b0 # init.start
+	Store {bool} init$guard t1
+	Jump → b1

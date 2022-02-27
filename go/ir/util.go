@@ -15,6 +15,9 @@ import (
 	"os"
 
 	"honnef.co/go/tools/go/ast/astutil"
+	"honnef.co/go/tools/go/types/typeutil"
+
+	"golang.org/x/exp/typeparams"
 )
 
 //// AST utilities
@@ -32,7 +35,16 @@ func isBlankIdent(e ast.Expr) bool {
 //// Type utilities.  Some of these belong in go/types.
 
 // isPointer returns true for types whose underlying type is a pointer.
+//
+// XXX should we handle type parameters here, or in callers?
 func isPointer(typ types.Type) bool {
+	// XXX do we really want to handle generics in isPointer instead of the callers?
+	// XXX are we only interested in the core type, or in the whole type set?
+
+	if ctyp := typeutil.CoreType(typ); ctyp != nil {
+		_, ok := ctyp.Underlying().(*types.Pointer)
+		return ok
+	}
 	_, ok := typ.Underlying().(*types.Pointer)
 	return ok
 }
@@ -41,10 +53,17 @@ func isInterface(T types.Type) bool { return types.IsInterface(T) }
 
 // deref returns a pointer's element type; otherwise it returns typ.
 func deref(typ types.Type) types.Type {
+	orig := typ
+
+	if t, ok := typ.(*typeparams.TypeParam); ok {
+		if ctyp := typeutil.CoreType(t); ctyp != nil {
+			typ = ctyp
+		}
+	}
 	if p, ok := typ.Underlying().(*types.Pointer); ok {
 		return p.Elem()
 	}
-	return typ
+	return orig
 }
 
 // recvType returns the receiver type of method obj.
@@ -124,5 +143,11 @@ func Unwrap(v Value) Value {
 		default:
 			return v
 		}
+	}
+}
+
+func assert(x bool) {
+	if !x {
+		panic("failed assertion")
 	}
 }
