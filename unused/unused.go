@@ -1,6 +1,8 @@
 // Package unused contains code for finding unused code.
 package unused
 
+// XXX don't add instantiated types/methods to the graph. add the origin types/methods.
+
 import (
 	"fmt"
 	"go/ast"
@@ -20,6 +22,7 @@ import (
 	"honnef.co/go/tools/internal/passes/buildir"
 	"honnef.co/go/tools/unused/typemap"
 
+	"golang.org/x/exp/typeparams"
 	"golang.org/x/tools/go/analysis"
 )
 
@@ -1263,6 +1266,7 @@ func owningObject(fn *ir.Function) types.Object {
 }
 
 func (g *graph) function(fn *ir.Function) {
+	assert(fn != nil)
 	if fn.Package() != nil && fn.Package() != g.pkg.IR {
 		return
 	}
@@ -1369,6 +1373,8 @@ func (g *graph) typ(t types.Type, parent types.Type) {
 	case *types.Basic:
 		// Nothing to do
 	case *types.Named:
+		// XXX type parameters
+
 		// (9.3) types use their underlying and element types
 		g.seeAndUse(t.Underlying(), t, edgeUnderlyingType)
 		g.seeAndUse(t.Obj(), t, edgeTypeName)
@@ -1405,6 +1411,7 @@ func (g *graph) typ(t types.Type, parent types.Type) {
 	case *types.Signature:
 		g.signature(t, nil)
 	case *types.Interface:
+		// XXX interfaces can contain types now
 		for i := 0; i < t.NumMethods(); i++ {
 			m := t.Method(i)
 			// (8.3) All interface methods are marked as used
@@ -1439,6 +1446,15 @@ func (g *graph) typ(t types.Type, parent types.Type) {
 		// (9.3) types use their underlying and element types
 		g.seeAndUse(t.Elem(), t, edgeElementType)
 		g.typ(t.Elem(), nil)
+	case *typeparams.TypeParam:
+		// (9.3) types use their underlying and element types
+
+		// XXX what do we have to do here? same as for Named? or less?
+		g.seeAndUse(t.Underlying(), t, edgeUnderlyingType)
+		g.seeAndUse(t.Obj(), t, edgeTypeName)
+		g.seeAndUse(t, t.Obj(), edgeNamedType)
+		g.seeAndUse(t.Constraint(), t, edgeElementType) // XXX introduce distinct edge label for constraints
+		g.typ(t.Underlying(), t)
 	default:
 		panic(fmt.Sprintf("unreachable: %T", t))
 	}
@@ -1451,6 +1467,8 @@ func (g *graph) variable(v *types.Var) {
 }
 
 func (g *graph) signature(sig *types.Signature, fn types.Object) {
+	// XXX type parameters
+
 	var user interface{} = fn
 	if fn == nil {
 		user = sig
@@ -1469,6 +1487,16 @@ func (g *graph) signature(sig *types.Signature, fn types.Object) {
 		param := sig.Results().At(i)
 		g.seeAndUse(param.Type(), user, edgeFunctionResult|edgeType)
 		g.typ(param.Type(), nil)
+	}
+	for i := 0; i < typeparams.RecvTypeParams(sig).Len(); i++ {
+		param := typeparams.RecvTypeParams(sig).At(i)
+		g.seeAndUse(param, user, edgeFunctionArgument|edgeType)
+		g.typ(param, nil)
+	}
+	for i := 0; i < typeparams.ForSignature(sig).Len(); i++ {
+		param := typeparams.ForSignature(sig).At(i)
+		g.seeAndUse(param, user, edgeFunctionArgument|edgeType)
+		g.typ(param, nil)
 	}
 }
 
@@ -1663,6 +1691,8 @@ func (g *graph) instructions(fn *ir.Function) {
 			case *ir.ArrayConst:
 				// nothing to do
 			case *ir.AggregateConst:
+				// nothing to do
+			case *ir.GenericConst:
 				// nothing to do
 			case *ir.Recv:
 				// nothing to do
