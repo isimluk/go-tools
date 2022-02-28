@@ -42,7 +42,7 @@ func isPointer(typ types.Type) bool {
 	// XXX are we only interested in the core type, or in the whole type set?
 
 	if ctyp := typeutil.CoreType(typ); ctyp != nil {
-		_, ok := ctyp.Underlying().(*types.Pointer)
+		_, ok := ctyp.(*types.Pointer)
 		return ok
 	}
 	_, ok := typ.Underlying().(*types.Pointer)
