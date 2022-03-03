@@ -1,0 +1,378 @@
+# Name: command-line-arguments.f
+# Package: command-line-arguments
+func f[T any](x T) interface{}:
+b0: # entry
+	t1 = Parameter <T> {x}
+	t2 = MakeInterface <interface{}> t1
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t2
+
+# Name: command-line-arguments.fs
+# Package: command-line-arguments
+func fs[T any](x T) interface{}:
+b0: # entry
+	t1 = Const <int> {0}
+	t2 = Parameter <T> {x}
+	t3 = HeapAlloc <*[1]T>
+	t4 = IndexAddr <*T> t3 t1
+	Store {T} t4 t2
+	t6 = Slice <[]T> t3 <nil> <nil> <nil>
+	t7 = MakeInterface <interface{}> t6
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t7
+
+# Name: command-line-arguments.g
+# Package: command-line-arguments
+func g[T any](x T) E:
+b0: # entry
+	t1 = Parameter <T> {x}
+	t2 = MakeInterface <E> t1
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t2
+
+# Name: (command-line-arguments.myInt).foo
+# Package: command-line-arguments
+func (t2 myInt) foo() int:
+b0: # entry
+	t1 = Const <myInt> {1}
+	t2 = Parameter <myInt> {x}
+	t3 = BinOp <myInt> {+} t2 t1
+	t4 = ChangeType <int> t3
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t4
+
+# Name: command-line-arguments.h
+# Package: command-line-arguments
+func h[T C](x T) interface{foo() int}:
+b0: # entry
+	t1 = Parameter <T> {x}
+	t2 = MakeInterface <interface{foo() int}> t1
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t2
+
+# Name: command-line-arguments.i
+# Package: command-line-arguments
+func i[T C](x T) C:
+b0: # entry
+	t1 = Parameter <T> {x}
+	t2 = MakeInterface <C> t1
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t2
+
+# Name: command-line-arguments.j
+# Package: command-line-arguments
+func j[T C](t T) C:
+b0: # entry
+	t1 = Parameter <T> {t}
+	t2 = MakeInterface <C> t1
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t2
+
+# Name: command-line-arguments.js
+# Package: command-line-arguments
+func js[T any](x T) interface{}:
+b0: # entry
+	t1 = Const <int> {0}
+	t2 = Parameter <T> {x}
+	t3 = HeapAlloc <*[1]T>
+	t4 = IndexAddr <*T> t3 t1
+	Store {T} t4 t2
+	t6 = Slice <[]T> t3 <nil> <nil> <nil>
+	t7 = MakeInterface <interface{}> t6
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t7
+
+# Name: f$generic#0
+# Synthetic: generic
+func f$generic#0(x int) interface{}:
+b0: # entry
+	t1 = Parameter <int> {x}
+	t2 = ChangeType <T> t1
+	t3 = Call <interface{}> command-line-arguments.f int t2
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t3
+
+# Name: fs$generic#0
+# Synthetic: generic
+func fs$generic#0(x int) interface{}:
+b0: # entry
+	t1 = Parameter <int> {x}
+	t2 = ChangeType <T> t1
+	t3 = Call <interface{}> command-line-arguments.fs int t2
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t3
+
+# Name: g$generic#0
+# Synthetic: generic
+func g$generic#0(x int) command-line-arguments.E:
+b0: # entry
+	t1 = Parameter <int> {x}
+	t2 = ChangeType <T> t1
+	t3 = Call <command-line-arguments.E> command-line-arguments.g int t2
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t3
+
+# Name: h$generic#0
+# Synthetic: generic
+func h$generic#0(x command-line-arguments.myInt) interface{foo() int}:
+b0: # entry
+	t1 = Parameter <command-line-arguments.myInt> {x}
+	t2 = ChangeType <T> t1
+	t3 = Call <interface{foo() int}> command-line-arguments.h command-line-arguments.myInt t2
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t3
+
+# Name: i$generic#0
+# Synthetic: generic
+func i$generic#0(x command-line-arguments.myInt) command-line-arguments.C:
+b0: # entry
+	t1 = Parameter <command-line-arguments.myInt> {x}
+	t2 = ChangeType <T> t1
+	t3 = Call <command-line-arguments.C> command-line-arguments.i command-line-arguments.myInt t2
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t3
+
+# Name: j$generic#0
+# Synthetic: generic
+func j$generic#0(t command-line-arguments.myInt) command-line-arguments.C:
+b0: # entry
+	t1 = Parameter <command-line-arguments.myInt> {t}
+	t2 = ChangeType <T> t1
+	t3 = Call <command-line-arguments.C> command-line-arguments.j command-line-arguments.myInt t2
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t3
+
+# Name: js$generic#0
+# Synthetic: generic
+func js$generic#0(x int) interface{}:
+b0: # entry
+	t1 = Parameter <int> {x}
+	t2 = ChangeType <T> t1
+	t3 = Call <interface{}> command-line-arguments.js int t2
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t3
+
+# Name: command-line-arguments.main
+# Package: command-line-arguments
+func main():
+b0: # entry
+	t1 = Const <int> {7}
+	t2 = Const <string> {"got %d want %d"}
+	t3 = Const <int> {0}
+	t4 = Const <int> {1}
+	t5 = Const <string> {"got %d want %d"}
+	t6 = Const <string> {"got %d want %d"}
+	t7 = Const <myInt> {7}
+	t8 = Const <int> {8}
+	t9 = Const <string> {"got %d want %d"}
+	t10 = Const <string> {"got %d want %d"}
+	t11 = Const <string> {"got %d want %d"}
+	t12 = Const <string> {"got %d want %d"}
+	t13 = Call <interface{}> f$generic#0 t1
+	t14 = MakeInterface <interface{}> t1
+	t15 = BinOp <bool> {!=} t13 t14
+	If t15 → b2 b3
+
+b1: ← b2 b4 b6 b8 b10 b12 b14 b13 # exit
+	Return
+
+b2: ← b0 # if.then
+	t18 = Sigma <interface{}> [b0] t13
+	t19 = Sigma <int> [b0] t1
+	t20 = HeapAlloc <*[2]any>
+	t21 = IndexAddr <*any> t20 t3
+	Store {interface{}} t21 t18
+	t23 = IndexAddr <*any> t20 t4
+	t24 = MakeInterface <any> t19
+	Store {any} t23 t24
+	t26 = Slice <[]any> t20 <nil> <nil> <nil>
+	t27 = Call <string> fmt.Sprintf t2 t26
+	t28 = MakeInterface <interface{}> t27
+	Panic t28 → b1
+
+b3: ← b0 # if.done
+	t30 = Call <interface{}> fs$generic#0 t1
+	t31 = HeapAlloc <*[1]int>
+	t32 = IndexAddr <*int> t31 t3
+	Store {int} t32 t1
+	t34 = Slice <[]int> t31 <nil> <nil> <nil>
+	t35 = TypeAssert <[]int> t30
+	t36 = IndexAddr <*int> t35 t3
+	t37 = Load <int> t36
+	t38 = IndexAddr <*int> t34 t3
+	t39 = Load <int> t38
+	t40 = BinOp <bool> {!=} t37 t39
+	If t40 → b4 b5
+
+b4: ← b3 # if.then
+	t42 = Sigma <interface{}> [b3] t30
+	t43 = Sigma <[]int> [b3] t34
+	t44 = HeapAlloc <*[2]any>
+	t45 = IndexAddr <*any> t44 t3
+	Store {interface{}} t45 t42
+	t47 = IndexAddr <*any> t44 t4
+	t48 = MakeInterface <any> t43
+	Store {any} t47 t48
+	t50 = Slice <[]any> t44 <nil> <nil> <nil>
+	t51 = Call <string> fmt.Sprintf t5 t50
+	t52 = MakeInterface <interface{}> t51
+	Panic t52 → b1
+
+b5: ← b3 # if.done
+	t54 = Call <E> g$generic#0 t1
+	t55 = MakeInterface <E> t1
+	t56 = BinOp <bool> {!=} t54 t55
+	If t56 → b6 b7
+
+b6: ← b5 # if.then
+	t58 = Sigma <E> [b5] t54
+	t59 = Sigma <int> [b5] t1
+	t60 = HeapAlloc <*[2]any>
+	t61 = IndexAddr <*any> t60 t3
+	t62 = ChangeInterface <any> t58
+	Store {any} t61 t62
+	t64 = IndexAddr <*any> t60 t4
+	t65 = MakeInterface <any> t59
+	Store {any} t64 t65
+	t67 = Slice <[]any> t60 <nil> <nil> <nil>
+	t68 = Call <string> fmt.Sprintf t6 t67
+	t69 = MakeInterface <interface{}> t68
+	Panic t69 → b1
+
+b7: ← b5 # if.done
+	t71 = Call <interface{foo() int}> h$generic#0 t7
+	t72 = CallInvoke <int> t71.foo
+	t73 = BinOp <bool> {!=} t72 t8
+	If t73 → b8 b9
+
+b8: ← b7 # if.then
+	t75 = Sigma <int> [b7] t72
+	t76 = Sigma <int> [b7] t8
+	t77 = HeapAlloc <*[2]any>
+	t78 = IndexAddr <*any> t77 t3
+	t79 = MakeInterface <any> t75
+	Store {any} t78 t79
+	t81 = IndexAddr <*any> t77 t4
+	t82 = MakeInterface <any> t76
+	Store {any} t81 t82
+	t84 = Slice <[]any> t77 <nil> <nil> <nil>
+	t85 = Call <string> fmt.Sprintf t9 t84
+	t86 = MakeInterface <interface{}> t85
+	Panic t86 → b1
+
+b9: ← b7 # if.done
+	t88 = Call <C> i$generic#0 t7
+	t89 = CallInvoke <int> t88.foo
+	t90 = BinOp <bool> {!=} t89 t8
+	If t90 → b10 b11
+
+b10: ← b9 # if.then
+	t92 = Sigma <int> [b9] t89
+	t93 = Sigma <int> [b9] t8
+	t94 = HeapAlloc <*[2]any>
+	t95 = IndexAddr <*any> t94 t3
+	t96 = MakeInterface <any> t92
+	Store {any} t95 t96
+	t98 = IndexAddr <*any> t94 t4
+	t99 = MakeInterface <any> t93
+	Store {any} t98 t99
+	t101 = Slice <[]any> t94 <nil> <nil> <nil>
+	t102 = Call <string> fmt.Sprintf t10 t101
+	t103 = MakeInterface <interface{}> t102
+	Panic t103 → b1
+
+b11: ← b9 # if.done
+	t105 = Call <C> j$generic#0 t7
+	t106 = CallInvoke <int> t105.foo
+	t107 = BinOp <bool> {!=} t106 t8
+	If t107 → b12 b13
+
+b12: ← b11 # if.then
+	t109 = Sigma <int> [b11] t106
+	t110 = Sigma <int> [b11] t8
+	t111 = HeapAlloc <*[2]any>
+	t112 = IndexAddr <*any> t111 t3
+	t113 = MakeInterface <any> t109
+	Store {any} t112 t113
+	t115 = IndexAddr <*any> t111 t4
+	t116 = MakeInterface <any> t110
+	Store {any} t115 t116
+	t118 = Slice <[]any> t111 <nil> <nil> <nil>
+	t119 = Call <string> fmt.Sprintf t11 t118
+	t120 = MakeInterface <interface{}> t119
+	Panic t120 → b1
+
+b13: ← b11 # if.done
+	t122 = Call <interface{}> js$generic#0 t1
+	t123 = HeapAlloc <*[1]int>
+	t124 = IndexAddr <*int> t123 t3
+	Store {int} t124 t1
+	t126 = Slice <[]int> t123 <nil> <nil> <nil>
+	t127 = TypeAssert <[]int> t122
+	t128 = IndexAddr <*int> t127 t3
+	t129 = Load <int> t128
+	t130 = IndexAddr <*int> t126 t3
+	t131 = Load <int> t130
+	t132 = BinOp <bool> {!=} t129 t131
+	If t132 → b14 b1
+
+b14: ← b13 # if.then
+	t134 = Sigma <interface{}> [b13] t122
+	t135 = Sigma <[]int> [b13] t126
+	t136 = HeapAlloc <*[2]any>
+	t137 = IndexAddr <*any> t136 t3
+	Store {interface{}} t137 t134
+	t139 = IndexAddr <*any> t136 t4
+	t140 = MakeInterface <any> t135
+	Store {any} t139 t140
+	t142 = Slice <[]any> t136 <nil> <nil> <nil>
+	t143 = Call <string> fmt.Sprintf t12 t142
+	t144 = MakeInterface <interface{}> t143
+	Panic t144 → b1
+
+# Name: command-line-arguments.init
+# Package: command-line-arguments
+# Synthetic: package initializer
+func init():
+b0: # entry
+	t1 = Const <bool> {true}
+	t2 = Load <bool> init$guard
+	If t2 → b1 b2
+
+b1: ← b0 b2 # exit
+	Return
+
+b2: ← b0 # init.start
+	Store {bool} init$guard t1
+	t6 = Call <()> fmt.init
+	Jump → b1

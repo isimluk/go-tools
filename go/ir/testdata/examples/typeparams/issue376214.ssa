@@ -1,0 +1,82 @@
+# Name: command-line-arguments.add
+# Package: command-line-arguments
+func add[S ~string|~[]byte](buf *[]byte, s S):
+b0: # entry
+	t1 = Parameter <*[]byte> {buf}
+	t2 = Parameter <S> {s}
+	t3 = Load <[]byte> t1
+	t4 = Call <[]byte> append t3 t2
+	Store {[]byte} t1 t4
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: add$generic#0
+# Synthetic: generic
+func add$generic#0(buf *[]byte, s string):
+b0: # entry
+	t1 = Parameter <*[]byte> {buf}
+	t2 = Parameter <string> {s}
+	t3 = ChangeType <S> t2
+	t4 = Call <()> command-line-arguments.add string t1 t3
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: add$generic#1
+# Synthetic: generic
+func add$generic#1(buf *[]byte, s []byte):
+b0: # entry
+	t1 = Parameter <*[]byte> {buf}
+	t2 = Parameter <[]byte> {s}
+	t3 = ChangeType <S> t2
+	t4 = Call <()> command-line-arguments.add []byte t1 t3
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: command-line-arguments.main
+# Package: command-line-arguments
+func main():
+b0: # entry
+	t1 = Const <string> {"foo"}
+	t2 = Const <string> {"bar"}
+	t3 = Const <string> {"foobar"}
+	t4 = Const <string> {"got "}
+	t5 = HeapAlloc <*[]byte>
+	t6 = Call <()> add$generic#0 t5 t1
+	t7 = Convert <[]byte> t2
+	t8 = Call <()> add$generic#1 t5 t7
+	t9 = Load <[]byte> t5
+	t10 = Convert <string> t9
+	t11 = BinOp <bool> {!=} t10 t3
+	If t11 → b2 b1
+
+b1: ← b2 b0 # exit
+	Return
+
+b2: ← b0 # if.then
+	t14 = Load <[]byte> t5
+	t15 = Convert <string> t14
+	t16 = BinOp <string> {+} t4 t15
+	t17 = MakeInterface <interface{}> t16
+	Panic t17 → b1
+
+# Name: command-line-arguments.init
+# Package: command-line-arguments
+# Synthetic: package initializer
+func init():
+b0: # entry
+	t1 = Const <bool> {true}
+	t2 = Load <bool> init$guard
+	If t2 → b1 b2
+
+b1: ← b0 b2 # exit
+	Return
+
+b2: ← b0 # init.start
+	Store {bool} init$guard t1
+	Jump → b1

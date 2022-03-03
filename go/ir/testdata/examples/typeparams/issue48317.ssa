@@ -1,0 +1,84 @@
+# Name: command-line-arguments.a
+# Package: command-line-arguments
+func a[T any]():
+b0: # entry
+	t1 = Const <string> {"{\"t1\":\"1\",\"t2\":2,..."}
+	t2 = Const <error> {nil}
+	t3 = HeapAlloc <*A[T]>
+	t4 = Convert <[]byte> t1
+	t5 = MakeInterface <any> t3
+	t6 = Call <error> encoding/json.Unmarshal t4 t5
+	t7 = BinOp <bool> {!=} t6 t2
+	If t7 → b2 b3
+
+b1: ← b2 b4 b6 b5 # exit
+	Return
+
+b2: ← b0 # if.then
+	t10 = Sigma <error> [b0] t6
+	t11 = ChangeInterface <interface{}> t10
+	Panic t11 → b1
+
+b3: ← b0 # if.done
+	t13 = Sigma <string> [b0] t1
+	t14 = MakeInterface <any> t3
+	t15 = Call <([]byte, error)> encoding/json.Marshal t14
+	t16 = Extract <[]byte> [0] () t15
+	t17 = Extract <error> [1] () t15
+	t18 = BinOp <bool> {!=} t17 t2
+	If t18 → b4 b5
+
+b4: ← b3 # if.then
+	t20 = Sigma <error> [b3] t17
+	t21 = ChangeInterface <interface{}> t20
+	Panic t21 → b1
+
+b5: ← b3 # if.else
+	t23 = Sigma <string> [b3] t13
+	t24 = Sigma <[]byte> [b3] t16
+	t25 = Convert <string> t24
+	t26 = BinOp <bool> {!=} t25 t23
+	If t26 → b6 b1
+
+b6: ← b5 # if.then
+	t28 = Sigma <[]byte> [b5] t24
+	t29 = Convert <string> t28
+	t30 = MakeInterface <interface{}> t29
+	Panic t30 → b1
+
+# Name: a$generic#0
+# Synthetic: generic
+func a$generic#0():
+b0: # entry
+	t1 = Call <()> command-line-arguments.a int
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: command-line-arguments.main
+# Package: command-line-arguments
+func main():
+b0: # entry
+	t1 = Call <()> a$generic#0
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: command-line-arguments.init
+# Package: command-line-arguments
+# Synthetic: package initializer
+func init():
+b0: # entry
+	t1 = Const <bool> {true}
+	t2 = Load <bool> init$guard
+	If t2 → b1 b2
+
+b1: ← b0 b2 # exit
+	Return
+
+b2: ← b0 # init.start
+	Store {bool} init$guard t1
+	t6 = Call <()> encoding/json.init
+	Jump → b1

@@ -1,0 +1,71 @@
+# Name: command-line-arguments.genfunc
+# Package: command-line-arguments
+func genfunc[T any](f func(c T)):
+b0: # entry
+	t1 = GenericConst <T>
+	t2 = Parameter <func(c T)> {f}
+	t3 = Call <()> t2 t1
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: command-line-arguments.test2
+# Package: command-line-arguments
+func test2(a interface{}):
+b0: # entry
+	t1 = Parameter <interface{}> {a}
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: command-line-arguments.myfunc
+# Package: command-line-arguments
+func myfunc(c string):
+b0: # entry
+	t1 = Parameter <string> {c}
+	t2 = MakeInterface <interface{}> t1
+	t3 = Call <()> test2 t2
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: genfunc$generic#0
+# Synthetic: generic
+func genfunc$generic#0(f func(c string)):
+b0: # entry
+	t1 = Parameter <func(c string)> {f}
+	t2 = ChangeType <func(c T)> t1
+	t3 = Call <()> command-line-arguments.genfunc string t2
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: command-line-arguments.main
+# Package: command-line-arguments
+func main():
+b0: # entry
+	t1 = Call <()> genfunc$generic#0 myfunc
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: command-line-arguments.init
+# Package: command-line-arguments
+# Synthetic: package initializer
+func init():
+b0: # entry
+	t1 = Const <bool> {true}
+	t2 = Load <bool> init$guard
+	If t2 → b1 b2
+
+b1: ← b0 b2 # exit
+	Return
+
+b2: ← b0 # init.start
+	Store {bool} init$guard t1
+	Jump → b1

@@ -1,0 +1,231 @@
+# Name: command-line-arguments.Sum
+# Package: command-line-arguments
+func Sum[T interface{int|float64}](vec []T) T:
+b0: # entry
+	t1 = Const <int> {-1}
+	t2 = Const <int> {1}
+	t3 = Const <T> {0}
+	t4 = Parameter <[]T> {vec}
+	t5 = Call <int> len t4
+	Jump → b2
+
+b1: ← b4 # exit
+	Return t23
+
+b2: ← b0 b3 # rangeindex.loop
+	t8 = Phi <T> 0:t3 3:t21
+	t9 = Phi <[]T> 0:t4 3:t16
+	t10 = Phi <int> 0:t5 3:t17
+	t11 = Phi <int> 0:t1 3:t18
+	t12 = BinOp <int> {+} t11 t2
+	t13 = BinOp <bool> {<} t12 t10
+	If t13 → b3 b4
+
+b3: ← b2 # rangeindex.body
+	t15 = Sigma <T> [b2] t8
+	t16 = Sigma <[]T> [b2] t9
+	t17 = Sigma <int> [b2] t10
+	t18 = Sigma <int> [b2] t12
+	t19 = IndexAddr <*T> t16 t18
+	t20 = Load <T> t19
+	t21 = BinOp <T> {+} t15 t20
+	Jump → b2
+
+b4: ← b2 # rangeindex.done
+	t23 = Sigma <T> [b2] t8
+	Jump → b1
+
+# Name: command-line-arguments.Abs
+# Package: command-line-arguments
+func Abs(f float64) float64:
+b0: # entry
+	t1 = Const <float64> {0}
+	t2 = Parameter <float64> {f}
+	t3 = BinOp <bool> {<} t2 t1
+	If t3 → b2 b3
+
+b1: ← b2 b3 # exit
+	t5 = Phi <float64> 2:t8 3:t10
+	Return t5
+
+b2: ← b0 # if.then
+	t7 = Sigma <float64> [b0] t2
+	t8 = UnOp <float64> {-} t7
+	Jump → b1
+
+b3: ← b0 # if.done
+	t10 = Sigma <float64> [b0] t2
+	Jump → b1
+
+# Name: Sum$generic#0
+# Synthetic: generic
+func Sum$generic#0(vec []int) int:
+b0: # entry
+	t1 = Parameter <[]int> {vec}
+	t2 = ChangeType <[]T> t1
+	t3 = Call <T> command-line-arguments.Sum int t2
+	t4 = ChangeType <int> t3
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t4
+
+# Name: Sum$generic#1
+# Synthetic: generic
+func Sum$generic#1(vec []float64) float64:
+b0: # entry
+	t1 = Parameter <[]float64> {vec}
+	t2 = ChangeType <[]T> t1
+	t3 = Call <T> command-line-arguments.Sum float64 t2
+	t4 = ChangeType <float64> t3
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t4
+
+# Name: command-line-arguments.main
+# Package: command-line-arguments
+func main():
+b0: # entry
+	t1 = Const <int> {0}
+	t2 = Const <int> {3}
+	t3 = Const <int> {1}
+	t4 = Const <int> {4}
+	t5 = Const <float64> {5.8}
+	t6 = Const <float64> {9.6}
+	t7 = Const <string> {"got %d, want %d"}
+	t8 = Const <string> {"got %d, want %d"}
+	t9 = Const <float64> {1e-10}
+	t10 = Const <string> {"got %f, want %f"}
+	t11 = Const <float64> {1e-10}
+	t12 = Const <string> {"got %f, want %f"}
+	t13 = HeapAlloc <*[2]int>
+	t14 = IndexAddr <*int> t13 t1
+	Store {int} t14 t2
+	t16 = IndexAddr <*int> t13 t3
+	Store {int} t16 t4
+	t18 = Slice <[]int> t13 <nil> <nil> <nil>
+	t19 = HeapAlloc <*[2]float64>
+	t20 = IndexAddr <*float64> t19 t1
+	Store {float64} t20 t5
+	t22 = IndexAddr <*float64> t19 t3
+	Store {float64} t22 t6
+	t24 = Slice <[]float64> t19 <nil> <nil> <nil>
+	t25 = Call <int> Sum$generic#0 t18
+	t26 = IndexAddr <*int> t18 t1
+	t27 = Load <int> t26
+	t28 = IndexAddr <*int> t18 t3
+	t29 = Load <int> t28
+	t30 = BinOp <int> {+} t27 t29
+	t31 = BinOp <bool> {!=} t25 t30
+	If t31 → b2 b3
+
+b1: ← b2 b4 b6 b8 b7 # exit
+	Return
+
+b2: ← b0 # if.then
+	t34 = Sigma <int> [b0] t25
+	t35 = Sigma <int> [b0] t30
+	t36 = HeapAlloc <*[2]any>
+	t37 = IndexAddr <*any> t36 t1
+	t38 = MakeInterface <any> t34
+	Store {any} t37 t38
+	t40 = IndexAddr <*any> t36 t3
+	t41 = MakeInterface <any> t35
+	Store {any} t40 t41
+	t43 = Slice <[]any> t36 <nil> <nil> <nil>
+	t44 = Call <string> fmt.Sprintf t7 t43
+	t45 = MakeInterface <interface{}> t44
+	Panic t45 → b1
+
+b3: ← b0 # if.done
+	t47 = Sigma <[]int> [b0] t18
+	t48 = Sigma <[]float64> [b0] t24
+	t49 = Sigma <int> [b0] t30
+	t50 = Call <int> Sum$generic#0 t47
+	t51 = BinOp <bool> {!=} t49 t50
+	If t51 → b4 b5
+
+b4: ← b3 # if.then
+	t53 = Sigma <int> [b3] t50
+	t54 = Sigma <int> [b3] t49
+	t55 = HeapAlloc <*[2]any>
+	t56 = IndexAddr <*any> t55 t1
+	t57 = MakeInterface <any> t53
+	Store {any} t56 t57
+	t59 = IndexAddr <*any> t55 t3
+	t60 = MakeInterface <any> t54
+	Store {any} t59 t60
+	t62 = Slice <[]any> t55 <nil> <nil> <nil>
+	t63 = Call <string> fmt.Sprintf t8 t62
+	t64 = MakeInterface <interface{}> t63
+	Panic t64 → b1
+
+b5: ← b3 # if.done
+	t66 = Sigma <[]float64> [b3] t48
+	t67 = IndexAddr <*float64> t66 t1
+	t68 = Load <float64> t67
+	t69 = IndexAddr <*float64> t66 t3
+	t70 = Load <float64> t69
+	t71 = BinOp <float64> {+} t68 t70
+	t72 = Call <float64> Sum$generic#1 t66
+	t73 = BinOp <float64> {-} t72 t71
+	t74 = Call <float64> Abs t73
+	t75 = BinOp <bool> {>} t74 t9
+	If t75 → b6 b7
+
+b6: ← b5 # if.then
+	t77 = Sigma <float64> [b5] t71
+	t78 = Sigma <float64> [b5] t72
+	t79 = HeapAlloc <*[2]any>
+	t80 = IndexAddr <*any> t79 t1
+	t81 = MakeInterface <any> t78
+	Store {any} t80 t81
+	t83 = IndexAddr <*any> t79 t3
+	t84 = MakeInterface <any> t77
+	Store {any} t83 t84
+	t86 = Slice <[]any> t79 <nil> <nil> <nil>
+	t87 = Call <string> fmt.Sprintf t10 t86
+	t88 = MakeInterface <interface{}> t87
+	Panic t88 → b1
+
+b7: ← b5 # if.done
+	t90 = Sigma <[]float64> [b5] t66
+	t91 = Sigma <float64> [b5] t71
+	t92 = Call <float64> Sum$generic#1 t90
+	t93 = BinOp <float64> {-} t92 t91
+	t94 = Call <float64> Abs t93
+	t95 = BinOp <bool> {>} t94 t11
+	If t95 → b8 b1
+
+b8: ← b7 # if.then
+	t97 = Sigma <float64> [b7] t91
+	t98 = Sigma <float64> [b7] t92
+	t99 = HeapAlloc <*[2]any>
+	t100 = IndexAddr <*any> t99 t1
+	t101 = MakeInterface <any> t98
+	Store {any} t100 t101
+	t103 = IndexAddr <*any> t99 t3
+	t104 = MakeInterface <any> t97
+	Store {any} t103 t104
+	t106 = Slice <[]any> t99 <nil> <nil> <nil>
+	t107 = Call <string> fmt.Sprintf t12 t106
+	t108 = MakeInterface <interface{}> t107
+	Panic t108 → b1
+
+# Name: command-line-arguments.init
+# Package: command-line-arguments
+# Synthetic: package initializer
+func init():
+b0: # entry
+	t1 = Const <bool> {true}
+	t2 = Load <bool> init$guard
+	If t2 → b1 b2
+
+b1: ← b0 b2 # exit
+	Return
+
+b2: ← b0 # init.start
+	Store {bool} init$guard t1
+	t6 = Call <()> fmt.init
+	Jump → b1

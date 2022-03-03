@@ -1,0 +1,117 @@
+# Name: (*command-line-arguments.Bar[T]).CreateBar
+# Synthetic: wrapper
+func (t3 *command-line-arguments.Bar[T]) CreateBar() command-line-arguments.Bar[T]:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"CreateBar"}
+	t3 = Parameter <*command-line-arguments.Bar[T]> {f}
+	t4 = Call <*command-line-arguments.Bar[T]> ir:wrapnilchk t3 t1 t2
+	t5 = Load <command-line-arguments.Bar[T]> t4
+	t6 = Call <command-line-arguments.Bar[T]> (command-line-arguments.Bar[T]).CreateBar t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t6
+
+# Name: (*command-line-arguments.Bar[T]).CreateBar
+# Synthetic: wrapper
+func (t3 *command-line-arguments.Bar[T]) CreateBar() command-line-arguments.Bar[T]:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"CreateBar"}
+	t3 = Parameter <*command-line-arguments.Bar[T]> {f}
+	t4 = Call <*command-line-arguments.Bar[T]> ir:wrapnilchk t3 t1 t2
+	t5 = Load <command-line-arguments.Bar[T]> t4
+	t6 = Call <command-line-arguments.Bar[T]> (command-line-arguments.Bar[T]).CreateBar t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t6
+
+# Name: (*command-line-arguments.Bar[T any]).CreateBar
+# Synthetic: wrapper
+func (t3 *command-line-arguments.Bar[T any]) CreateBar() command-line-arguments.Bar[T]:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"CreateBar"}
+	t3 = Parameter <*command-line-arguments.Bar[T any]> {f}
+	t4 = Call <*command-line-arguments.Bar[T any]> ir:wrapnilchk t3 t1 t2
+	t5 = Load <command-line-arguments.Bar[T any]> t4
+	t6 = Call <command-line-arguments.Bar[T]> (command-line-arguments.Bar[T]).CreateBar t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t6
+
+# Name: (*command-line-arguments.Bar[T]).CreateBar
+# Synthetic: wrapper
+func (t3 *command-line-arguments.Bar[T]) CreateBar() command-line-arguments.Bar[T]:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"CreateBar"}
+	t3 = Parameter <*command-line-arguments.Bar[T]> {f}
+	t4 = Call <*command-line-arguments.Bar[T]> ir:wrapnilchk t3 t1 t2
+	t5 = Load <command-line-arguments.Bar[T]> t4
+	t6 = Call <command-line-arguments.Bar[T]> (command-line-arguments.Bar[T]).CreateBar t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t6
+
+# Name: (command-line-arguments.Bar[T]).CreateBar
+# Package: command-line-arguments
+func (t1 Bar[T]) CreateBar() Bar[T]:
+b0: # entry
+	t1 = Parameter <Bar[T]> {f}
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t1
+
+# Name: command-line-arguments.abc
+# Package: command-line-arguments
+func abc[R any]():
+b0: # entry
+	t1 = Const <Bar[R]> {nil}
+	t2 = Call <Bar[R]> t1
+	BlankStore t2
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: abc$generic#0
+# Synthetic: generic
+func abc$generic#0():
+b0: # entry
+	t1 = Call <()> command-line-arguments.abc int
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: command-line-arguments.main
+# Package: command-line-arguments
+func main():
+b0: # entry
+	t1 = Call <()> abc$generic#0
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: command-line-arguments.init
+# Package: command-line-arguments
+# Synthetic: package initializer
+func init():
+b0: # entry
+	t1 = Const <bool> {true}
+	t2 = Load <bool> init$guard
+	If t2 → b1 b2
+
+b1: ← b0 b2 # exit
+	Return
+
+b2: ← b0 # init.start
+	Store {bool} init$guard t1
+	Jump → b1

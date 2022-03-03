@@ -1,0 +1,203 @@
+# Name: command-line-arguments.mapper
+# Package: command-line-arguments
+func mapper[F, T any](s []F, f func(F) T) []T:
+b0: # entry
+	t1 = Const <int> {-1}
+	t2 = Const <int> {1}
+	t3 = Parameter <[]F> {s}
+	t4 = Parameter <func(F) T> {f}
+	t5 = Call <int> len t3
+	t6 = MakeSlice <[]T> t5 t5
+	t7 = Call <int> len t3
+	Jump → b2
+
+b1: ← b4 # exit
+	Return t29
+
+b2: ← b0 b3 # rangeindex.loop
+	t10 = Phi <func(F) T> 0:t4 3:t18
+	t11 = Phi <[]T> 0:t6 3:t19
+	t12 = Phi <[]F> 0:t3 3:t20
+	t13 = Phi <int> 0:t7 3:t21
+	t14 = Phi <int> 0:t1 3:t22
+	t15 = BinOp <int> {+} t14 t2
+	t16 = BinOp <bool> {<} t15 t13
+	If t16 → b3 b4
+
+b3: ← b2 # rangeindex.body
+	t18 = Sigma <func(F) T> [b2] t10
+	t19 = Sigma <[]T> [b2] t11
+	t20 = Sigma <[]F> [b2] t12
+	t21 = Sigma <int> [b2] t13
+	t22 = Sigma <int> [b2] t15
+	t23 = IndexAddr <*F> t20 t22
+	t24 = Load <F> t23
+	t25 = IndexAddr <*T> t19 t22
+	t26 = Call <T> t18 t24
+	Store {T} t25 t26
+	Jump → b2
+
+b4: ← b2 # rangeindex.done
+	t29 = Sigma <[]T> [b2] t11
+	Jump → b1
+
+# Name: mapper$generic#0
+# Synthetic: generic
+func mapper$generic#0(s []int, f func(int) string) []string:
+b0: # entry
+	t1 = Parameter <[]int> {s}
+	t2 = Parameter <func(int) string> {f}
+	t3 = ChangeType <[]F> t1
+	t4 = ChangeType <func(F) T> t2
+	t5 = Call <[]T> command-line-arguments.mapper int string t3 t4
+	t6 = ChangeType <[]string> t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t6
+
+# Name: mapper$generic#1
+# Synthetic: generic
+func mapper$generic#1(s []float64, f func(float64) string) []string:
+b0: # entry
+	t1 = Parameter <[]float64> {s}
+	t2 = Parameter <func(float64) string> {f}
+	t3 = ChangeType <[]F> t1
+	t4 = ChangeType <func(F) T> t2
+	t5 = Call <[]T> command-line-arguments.mapper float64 string t3 t4
+	t6 = ChangeType <[]string> t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t6
+
+# Name: command-line-arguments.main$1
+# Package: command-line-arguments
+# Parent: main
+func main$1(f float64) string:
+b0: # entry
+	t1 = Const <byte> {102}
+	t2 = Const <int> {-1}
+	t3 = Const <int> {64}
+	t4 = Parameter <float64> {f}
+	t5 = Call <string> strconv.FormatFloat t4 t1 t2 t3
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t5
+
+# Name: command-line-arguments.main
+# Package: command-line-arguments
+func main():
+b0: # entry
+	t1 = Const <int> {0}
+	t2 = Const <int> {1}
+	t3 = Const <int> {2}
+	t4 = Const <int> {3}
+	t5 = Const <string> {"1"}
+	t6 = Const <string> {"2"}
+	t7 = Const <string> {"3"}
+	t8 = Const <string> {"got %s, want %s"}
+	t9 = Const <float64> {2.5}
+	t10 = Const <float64> {2.3}
+	t11 = Const <float64> {3.5}
+	t12 = Const <string> {"2.5"}
+	t13 = Const <string> {"2.3"}
+	t14 = Const <string> {"3.5"}
+	t15 = Const <string> {"got %s, want %s"}
+	t16 = HeapAlloc <*[3]int>
+	t17 = IndexAddr <*int> t16 t1
+	Store {int} t17 t2
+	t19 = IndexAddr <*int> t16 t2
+	Store {int} t19 t3
+	t21 = IndexAddr <*int> t16 t3
+	Store {int} t21 t4
+	t23 = Slice <[]int> t16 <nil> <nil> <nil>
+	t24 = Call <[]string> mapper$generic#0 t23 strconv.Itoa
+	t25 = HeapAlloc <*[3]string>
+	t26 = IndexAddr <*string> t25 t1
+	Store {string} t26 t5
+	t28 = IndexAddr <*string> t25 t2
+	Store {string} t28 t6
+	t30 = IndexAddr <*string> t25 t3
+	Store {string} t30 t7
+	t32 = Slice <[]string> t25 <nil> <nil> <nil>
+	t33 = MakeInterface <any> t24
+	t34 = MakeInterface <any> t32
+	t35 = Call <bool> reflect.DeepEqual t33 t34
+	If t35 → b3 b2
+
+b1: ← b2 b4 b3 # exit
+	Return
+
+b2: ← b0 # if.then
+	t38 = Sigma <[]string> [b0] t24
+	t39 = Sigma <[]string> [b0] t32
+	t40 = HeapAlloc <*[2]any>
+	t41 = IndexAddr <*any> t40 t1
+	t42 = MakeInterface <any> t38
+	Store {any} t41 t42
+	t44 = IndexAddr <*any> t40 t2
+	t45 = MakeInterface <any> t39
+	Store {any} t44 t45
+	t47 = Slice <[]any> t40 <nil> <nil> <nil>
+	t48 = Call <string> fmt.Sprintf t8 t47
+	t49 = MakeInterface <interface{}> t48
+	Panic t49 → b1
+
+b3: ← b0 # if.done
+	t51 = HeapAlloc <*[3]float64>
+	t52 = IndexAddr <*float64> t51 t1
+	Store {float64} t52 t9
+	t54 = IndexAddr <*float64> t51 t2
+	Store {float64} t54 t10
+	t56 = IndexAddr <*float64> t51 t3
+	Store {float64} t56 t11
+	t58 = Slice <[]float64> t51 <nil> <nil> <nil>
+	t59 = Call <[]string> mapper$generic#1 t58 main$1
+	t60 = HeapAlloc <*[3]string>
+	t61 = IndexAddr <*string> t60 t1
+	Store {string} t61 t12
+	t63 = IndexAddr <*string> t60 t2
+	Store {string} t63 t13
+	t65 = IndexAddr <*string> t60 t3
+	Store {string} t65 t14
+	t67 = Slice <[]string> t60 <nil> <nil> <nil>
+	t68 = MakeInterface <any> t59
+	t69 = MakeInterface <any> t67
+	t70 = Call <bool> reflect.DeepEqual t68 t69
+	If t70 → b1 b4
+
+b4: ← b3 # if.then
+	t72 = Sigma <[]string> [b3] t59
+	t73 = Sigma <[]string> [b3] t67
+	t74 = HeapAlloc <*[2]any>
+	t75 = IndexAddr <*any> t74 t1
+	t76 = MakeInterface <any> t72
+	Store {any} t75 t76
+	t78 = IndexAddr <*any> t74 t2
+	t79 = MakeInterface <any> t73
+	Store {any} t78 t79
+	t81 = Slice <[]any> t74 <nil> <nil> <nil>
+	t82 = Call <string> fmt.Sprintf t15 t81
+	t83 = MakeInterface <interface{}> t82
+	Panic t83 → b1
+
+# Name: command-line-arguments.init
+# Package: command-line-arguments
+# Synthetic: package initializer
+func init():
+b0: # entry
+	t1 = Const <bool> {true}
+	t2 = Load <bool> init$guard
+	If t2 → b1 b2
+
+b1: ← b0 b2 # exit
+	Return
+
+b2: ← b0 # init.start
+	Store {bool} init$guard t1
+	t6 = Call <()> fmt.init
+	t7 = Call <()> reflect.init
+	t8 = Call <()> strconv.init
+	Jump → b1

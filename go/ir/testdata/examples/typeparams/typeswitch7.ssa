@@ -1,0 +1,155 @@
+# Name: command-line-arguments.f
+# Package: command-line-arguments
+func f[T any](i interface{foo()}):
+b0: # entry
+	t1 = Const <int> {0}
+	t2 = Const <int> {1}
+	t3 = Const <int> {2}
+	t4 = Const <int> {-1}
+	t5 = Const <string> {"barT"}
+	t6 = Const <string> {"myint"}
+	t7 = Const <string> {"myfloat"}
+	t8 = Const <string> {"other"}
+	t9 = Parameter <interface{foo()}> {i}
+	t10 = TypeSwitch <(index int, interface{bar() T}, myint, myfloat, interface{foo()})> t9 "interface{bar() T}" "myint" "myfloat"
+	t11 = Extract <int> [0] (index) t10
+	ConstantSwitch t11 t1 t2 t3 t4 → b2 b3 b4 b5
+
+b1: ← b2 b3 b4 b5 # exit
+	Return
+
+b2: ← b0 # typeswitch.head
+	t14 = Call <()> println t5
+	Jump → b1
+
+b3: ← b0 # typeswitch.head
+	t16 = Call <()> println t6
+	Jump → b1
+
+b4: ← b0 # typeswitch.head
+	t18 = Call <()> println t7
+	Jump → b1
+
+b5: ← b0 # typeswitch.default
+	t20 = Call <()> println t8
+	Jump → b1
+
+# Name: (command-line-arguments.myint).foo
+# Package: command-line-arguments
+func (t1 myint) foo():
+b0: # entry
+	t1 = Parameter <myint> {arg0}
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: (command-line-arguments.myint).bar
+# Package: command-line-arguments
+func (t1 myint) bar() int:
+b0: # entry
+	t1 = Parameter <myint> {x}
+	t2 = ChangeType <int> t1
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t2
+
+# Name: (command-line-arguments.myfloat).foo
+# Package: command-line-arguments
+func (t1 myfloat) foo():
+b0: # entry
+	t1 = Parameter <myfloat> {arg0}
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: f$generic#0
+# Synthetic: generic
+func f$generic#0(i interface{foo()}):
+b0: # entry
+	t1 = Parameter <interface{foo()}> {i}
+	t2 = Call <()> command-line-arguments.f int t1
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: (*command-line-arguments.myint).bar
+# Synthetic: wrapper
+func (t3 *command-line-arguments.myint) bar() int:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"bar"}
+	t3 = Parameter <*command-line-arguments.myint> {x}
+	t4 = Call <*command-line-arguments.myint> ir:wrapnilchk t3 t1 t2
+	t5 = Load <command-line-arguments.myint> t4
+	t6 = Call <int> (command-line-arguments.myint).bar t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t6
+
+# Name: (*command-line-arguments.myint).foo
+# Synthetic: wrapper
+func (t3 *command-line-arguments.myint) foo():
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"foo"}
+	t3 = Parameter <*command-line-arguments.myint> {arg0}
+	t4 = Call <*command-line-arguments.myint> ir:wrapnilchk t3 t1 t2
+	t5 = Load <command-line-arguments.myint> t4
+	t6 = Call <()> (command-line-arguments.myint).foo t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: (*command-line-arguments.myfloat).foo
+# Synthetic: wrapper
+func (t3 *command-line-arguments.myfloat) foo():
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"foo"}
+	t3 = Parameter <*command-line-arguments.myfloat> {arg0}
+	t4 = Call <*command-line-arguments.myfloat> ir:wrapnilchk t3 t1 t2
+	t5 = Load <command-line-arguments.myfloat> t4
+	t6 = Call <()> (command-line-arguments.myfloat).foo t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: command-line-arguments.main
+# Package: command-line-arguments
+func main():
+b0: # entry
+	t1 = Const <interface{foo()}> {nil}
+	t2 = Const <myint> {6}
+	t3 = Const <myfloat> {7}
+	t4 = Call <()> f$generic#0 t1
+	t5 = MakeInterface <interface{foo()}> t2
+	t6 = Call <()> f$generic#0 t5
+	t7 = MakeInterface <interface{foo()}> t3
+	t8 = Call <()> f$generic#0 t7
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: command-line-arguments.init
+# Package: command-line-arguments
+# Synthetic: package initializer
+func init():
+b0: # entry
+	t1 = Const <bool> {true}
+	t2 = Load <bool> init$guard
+	If t2 → b1 b2
+
+b1: ← b0 b2 # exit
+	Return
+
+b2: ← b0 # init.start
+	Store {bool} init$guard t1
+	Jump → b1

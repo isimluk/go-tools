@@ -1,0 +1,84 @@
+# Name: command-line-arguments.Foo$1
+# Package: command-line-arguments
+# Parent: Foo
+# Free variables:
+#   0:	t *T
+func Foo$1() T:
+b0: # entry
+	t1 = Load <T> t
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t1
+
+# Name: command-line-arguments.Foo
+# Package: command-line-arguments
+func Foo[T Constraint[T]]() T:
+b0: # entry
+	t1 = HeapAlloc <*T>
+	t2 = MakeClosure <func() T> Foo$1 t1
+	t3 = ChangeType <T> t2
+	Store {T} t1 t3
+	t5 = Load <T> t1
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t5
+
+# Name: Foo$generic#0
+# Synthetic: generic
+func Foo$generic#0() command-line-arguments.Bar:
+b0: # entry
+	t1 = Call <T> command-line-arguments.Foo command-line-arguments.Bar
+	t2 = ChangeType <command-line-arguments.Bar> t1
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t2
+
+# Name: command-line-arguments.fn1
+# Package: command-line-arguments
+func fn1():
+b0: # entry
+	t1 = Call <Bar> Foo$generic#0
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: Foo$generic#1
+# Synthetic: generic
+func Foo$generic#1() command-line-arguments.Bar:
+b0: # entry
+	t1 = Call <T> command-line-arguments.Foo command-line-arguments.Bar
+	t2 = ChangeType <command-line-arguments.Bar> t1
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t2
+
+# Name: command-line-arguments.fn2
+# Package: command-line-arguments
+func fn2():
+b0: # entry
+	t1 = Call <Bar> Foo$generic#1
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: command-line-arguments.init
+# Package: command-line-arguments
+# Synthetic: package initializer
+func init():
+b0: # entry
+	t1 = Const <bool> {true}
+	t2 = Load <bool> init$guard
+	If t2 → b1 b2
+
+b1: ← b0 b2 # exit
+	Return
+
+b2: ← b0 # init.start
+	Store {bool} init$guard t1
+	Jump → b1
