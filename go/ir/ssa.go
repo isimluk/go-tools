@@ -13,6 +13,7 @@ import (
 	"go/constant"
 	"go/token"
 	"go/types"
+	"io"
 	"sync"
 
 	"golang.org/x/exp/typeparams"
@@ -29,6 +30,8 @@ type Program struct {
 	packages   map[*types.Package]*Package // all loaded Packages, keyed by object
 	mode       BuilderMode                 // set of mode bits for IR construction
 	MethodSets typeutil.MethodSetCache     // cache of type-checker's method-sets
+
+	log io.Writer // destination for PrintFuncs mode
 
 	methodsMu    sync.Mutex                 // guards the following maps:
 	methodSets   typeutil.Map               // maps type to its concrete methodSet
@@ -1678,7 +1681,7 @@ func (c *CallCommon) Signature() *types.Signature {
 	if c.Method != nil {
 		return c.Method.Type().(*types.Signature)
 	}
-	return c.Value.Type().Underlying().(*types.Signature)
+	return typeutil.CoreType(c.Value.Type()).(*types.Signature)
 }
 
 // StaticCallee returns the callee if this is a trivially static

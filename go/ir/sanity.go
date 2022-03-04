@@ -446,7 +446,7 @@ func (s *sanity) checkFunction(fn *Function) bool {
 	// separate-compilation model), and error.Error.
 	if fn.Pkg == nil {
 		switch fn.Synthetic {
-		case SyntheticWrapper, SyntheticBound, SyntheticThunk:
+		case SyntheticWrapper, SyntheticBound, SyntheticThunk, SyntheticGeneric:
 		default:
 			if !strings.HasSuffix(fn.name, "Error") {
 				s.errorf("nil Pkg")

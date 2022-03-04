@@ -614,7 +614,11 @@ func (f *Function) finishBody() {
 
 	if f.Prog.mode&PrintFunctions != 0 {
 		printMu.Lock()
-		f.WriteTo(os.Stdout)
+		out := f.Prog.log
+		if out == nil {
+			out = os.Stdout
+		}
+		f.WriteTo(out)
 		printMu.Unlock()
 	}
 
