@@ -30,6 +30,6 @@ func main() {
 		return r
 	}, "123")
 	if got != want {
-		panic(fmt.Sprintf("got %f, want %f", got, want))
+		panic(fmt.Sprintf("got %d, want %d", got, want))
 	}
 }

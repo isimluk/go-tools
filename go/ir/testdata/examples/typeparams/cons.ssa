@@ -1,0 +1,1024 @@
+# Name: (*command-line-arguments.Int).Equal
+# Synthetic: wrapper
+func (t3 *command-line-arguments.Int) Equal(that int) bool:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"Equal"}
+	t3 = Parameter <*command-line-arguments.Int> {p}
+	t4 = Parameter <int> {that}
+	t5 = Call <*command-line-arguments.Int> ir:wrapnilchk t3 t1 t2
+	t6 = Load <command-line-arguments.Int> t5
+	t7 = Call <bool> (command-line-arguments.Int).Equal t6 t4
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t7
+
+# Name: (command-line-arguments.Nil[a]).Match
+# Synthetic: generic
+func (t1 command-line-arguments.Nil[a]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Parameter <command-line-arguments.Nil[a]> {xs}
+	t2 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> {casenil}
+	t3 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> {casecons}
+	t4 = ChangeType <command-line-arguments.Nil[a]> t1
+	t5 = ChangeType <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> t2
+	t6 = ChangeType <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> t3
+	t7 = Call <command-line-arguments.any> (command-line-arguments.Nil[a]).Match a t4 t5 t6
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t7
+
+# Name: (*command-line-arguments.Nil[a]).Match
+# Synthetic: wrapper
+func (t3 *command-line-arguments.Nil[a]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"Match"}
+	t3 = Parameter <*command-line-arguments.Nil[a]> {xs}
+	t4 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> {casenil}
+	t5 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> {casecons}
+	t6 = Call <*command-line-arguments.Nil[a]> ir:wrapnilchk t3 t1 t2
+	t7 = Load <command-line-arguments.Nil[a]> t6
+	t8 = Call <command-line-arguments.any> (command-line-arguments.Nil[a]).Match t7 t4 t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t8
+
+# Name: (command-line-arguments.Cons[a]).Match
+# Synthetic: generic
+func (t1 command-line-arguments.Cons[a]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Parameter <command-line-arguments.Cons[a]> {xs}
+	t2 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> {casenil}
+	t3 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> {casecons}
+	t4 = ChangeType <command-line-arguments.Cons[a]> t1
+	t5 = ChangeType <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> t2
+	t6 = ChangeType <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> t3
+	t7 = Call <command-line-arguments.any> (command-line-arguments.Cons[a]).Match a t4 t5 t6
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t7
+
+# Name: (*command-line-arguments.Cons[a]).Match
+# Synthetic: wrapper
+func (t3 *command-line-arguments.Cons[a]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"Match"}
+	t3 = Parameter <*command-line-arguments.Cons[a]> {xs}
+	t4 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> {casenil}
+	t5 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> {casecons}
+	t6 = Call <*command-line-arguments.Cons[a]> ir:wrapnilchk t3 t1 t2
+	t7 = Load <command-line-arguments.Cons[a]> t6
+	t8 = Call <command-line-arguments.any> (command-line-arguments.Cons[a]).Match t7 t4 t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t8
+
+# Name: (command-line-arguments.Nil[b]).Match
+# Synthetic: generic
+func (t1 command-line-arguments.Nil[b]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[b], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[b], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Parameter <command-line-arguments.Nil[b]> {xs}
+	t2 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[b], command-line-arguments.any]> {casenil}
+	t3 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[b], command-line-arguments.any]> {casecons}
+	t4 = ChangeType <command-line-arguments.Nil[a]> t1
+	t5 = ChangeType <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> t2
+	t6 = ChangeType <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> t3
+	t7 = Call <command-line-arguments.any> (command-line-arguments.Nil[a]).Match b t4 t5 t6
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t7
+
+# Name: (*command-line-arguments.Nil[b]).Match
+# Synthetic: wrapper
+func (t3 *command-line-arguments.Nil[b]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[b], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[b], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"Match"}
+	t3 = Parameter <*command-line-arguments.Nil[b]> {xs}
+	t4 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[b], command-line-arguments.any]> {casenil}
+	t5 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[b], command-line-arguments.any]> {casecons}
+	t6 = Call <*command-line-arguments.Nil[b]> ir:wrapnilchk t3 t1 t2
+	t7 = Load <command-line-arguments.Nil[b]> t6
+	t8 = Call <command-line-arguments.any> (command-line-arguments.Nil[b]).Match t7 t4 t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t8
+
+# Name: (command-line-arguments.Cons[b]).Match
+# Synthetic: generic
+func (t1 command-line-arguments.Cons[b]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[b], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[b], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Parameter <command-line-arguments.Cons[b]> {xs}
+	t2 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[b], command-line-arguments.any]> {casenil}
+	t3 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[b], command-line-arguments.any]> {casecons}
+	t4 = ChangeType <command-line-arguments.Cons[a]> t1
+	t5 = ChangeType <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> t2
+	t6 = ChangeType <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> t3
+	t7 = Call <command-line-arguments.any> (command-line-arguments.Cons[a]).Match b t4 t5 t6
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t7
+
+# Name: (*command-line-arguments.Cons[b]).Match
+# Synthetic: wrapper
+func (t3 *command-line-arguments.Cons[b]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[b], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[b], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"Match"}
+	t3 = Parameter <*command-line-arguments.Cons[b]> {xs}
+	t4 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[b], command-line-arguments.any]> {casenil}
+	t5 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[b], command-line-arguments.any]> {casecons}
+	t6 = Call <*command-line-arguments.Cons[b]> ir:wrapnilchk t3 t1 t2
+	t7 = Load <command-line-arguments.Cons[b]> t6
+	t8 = Call <command-line-arguments.any> (command-line-arguments.Cons[b]).Match t7 t4 t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t8
+
+# Name: (command-line-arguments.Nil[a]).Match
+# Synthetic: generic
+func (t1 command-line-arguments.Nil[a]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Parameter <command-line-arguments.Nil[a]> {xs}
+	t2 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> {casenil}
+	t3 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> {casecons}
+	t4 = ChangeType <command-line-arguments.Nil[a]> t1
+	t5 = ChangeType <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> t2
+	t6 = ChangeType <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> t3
+	t7 = Call <command-line-arguments.any> (command-line-arguments.Nil[a]).Match a t4 t5 t6
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t7
+
+# Name: (*command-line-arguments.Nil[a]).Match
+# Synthetic: wrapper
+func (t3 *command-line-arguments.Nil[a]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"Match"}
+	t3 = Parameter <*command-line-arguments.Nil[a]> {xs}
+	t4 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> {casenil}
+	t5 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> {casecons}
+	t6 = Call <*command-line-arguments.Nil[a]> ir:wrapnilchk t3 t1 t2
+	t7 = Load <command-line-arguments.Nil[a]> t6
+	t8 = Call <command-line-arguments.any> (command-line-arguments.Nil[a]).Match t7 t4 t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t8
+
+# Name: (command-line-arguments.Cons[a]).Match
+# Synthetic: generic
+func (t1 command-line-arguments.Cons[a]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Parameter <command-line-arguments.Cons[a]> {xs}
+	t2 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> {casenil}
+	t3 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> {casecons}
+	t4 = ChangeType <command-line-arguments.Cons[a]> t1
+	t5 = ChangeType <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> t2
+	t6 = ChangeType <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> t3
+	t7 = Call <command-line-arguments.any> (command-line-arguments.Cons[a]).Match a t4 t5 t6
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t7
+
+# Name: (*command-line-arguments.Cons[a]).Match
+# Synthetic: wrapper
+func (t3 *command-line-arguments.Cons[a]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"Match"}
+	t3 = Parameter <*command-line-arguments.Cons[a]> {xs}
+	t4 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> {casenil}
+	t5 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> {casecons}
+	t6 = Call <*command-line-arguments.Cons[a]> ir:wrapnilchk t3 t1 t2
+	t7 = Load <command-line-arguments.Cons[a]> t6
+	t8 = Call <command-line-arguments.any> (command-line-arguments.Cons[a]).Match t7 t4 t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t8
+
+# Name: (*command-line-arguments.Nil[a]).Match
+# Synthetic: wrapper
+func (t3 *command-line-arguments.Nil[a]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"Match"}
+	t3 = Parameter <*command-line-arguments.Nil[a]> {xs}
+	t4 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> {casenil}
+	t5 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> {casecons}
+	t6 = Call <*command-line-arguments.Nil[a]> ir:wrapnilchk t3 t1 t2
+	t7 = Load <command-line-arguments.Nil[a]> t6
+	t8 = Call <command-line-arguments.any> (command-line-arguments.Nil[a]).Match t7 t4 t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t8
+
+# Name: (command-line-arguments.Cons[a]).Match
+# Synthetic: generic
+func (t1 command-line-arguments.Cons[a]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Parameter <command-line-arguments.Cons[a]> {xs}
+	t2 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> {casenil}
+	t3 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> {casecons}
+	t4 = ChangeType <command-line-arguments.Cons[a]> t1
+	t5 = ChangeType <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> t2
+	t6 = ChangeType <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> t3
+	t7 = Call <command-line-arguments.any> (command-line-arguments.Cons[a]).Match a t4 t5 t6
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t7
+
+# Name: (*command-line-arguments.Cons[a]).Match
+# Synthetic: wrapper
+func (t3 *command-line-arguments.Cons[a]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"Match"}
+	t3 = Parameter <*command-line-arguments.Cons[a]> {xs}
+	t4 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> {casenil}
+	t5 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> {casecons}
+	t6 = Call <*command-line-arguments.Cons[a]> ir:wrapnilchk t3 t1 t2
+	t7 = Load <command-line-arguments.Cons[a]> t6
+	t8 = Call <command-line-arguments.any> (command-line-arguments.Cons[a]).Match t7 t4 t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t8
+
+# Name: (*command-line-arguments.Nil[a command-line-arguments.any]).Match
+# Synthetic: wrapper
+func (t3 *command-line-arguments.Nil[a command-line-arguments.any]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"Match"}
+	t3 = Parameter <*command-line-arguments.Nil[a command-line-arguments.any]> {xs}
+	t4 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> {casenil}
+	t5 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> {casecons}
+	t6 = Call <*command-line-arguments.Nil[a command-line-arguments.any]> ir:wrapnilchk t3 t1 t2
+	t7 = Load <command-line-arguments.Nil[a command-line-arguments.any]> t6
+	t8 = Call <command-line-arguments.any> (command-line-arguments.Nil[a]).Match t7 t4 t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t8
+
+# Name: (command-line-arguments.Nil[a]).Match
+# Synthetic: generic
+func (t1 command-line-arguments.Nil[a]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Parameter <command-line-arguments.Nil[a]> {xs}
+	t2 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> {casenil}
+	t3 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> {casecons}
+	t4 = ChangeType <command-line-arguments.Nil[a]> t1
+	t5 = ChangeType <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> t2
+	t6 = ChangeType <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> t3
+	t7 = Call <command-line-arguments.any> (command-line-arguments.Nil[a]).Match a t4 t5 t6
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t7
+
+# Name: (*command-line-arguments.Nil[a]).Match
+# Synthetic: wrapper
+func (t3 *command-line-arguments.Nil[a]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"Match"}
+	t3 = Parameter <*command-line-arguments.Nil[a]> {xs}
+	t4 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> {casenil}
+	t5 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> {casecons}
+	t6 = Call <*command-line-arguments.Nil[a]> ir:wrapnilchk t3 t1 t2
+	t7 = Load <command-line-arguments.Nil[a]> t6
+	t8 = Call <command-line-arguments.any> (command-line-arguments.Nil[a]).Match t7 t4 t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t8
+
+# Name: (*command-line-arguments.Cons[a]).Match
+# Synthetic: wrapper
+func (t3 *command-line-arguments.Cons[a]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"Match"}
+	t3 = Parameter <*command-line-arguments.Cons[a]> {xs}
+	t4 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> {casenil}
+	t5 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> {casecons}
+	t6 = Call <*command-line-arguments.Cons[a]> ir:wrapnilchk t3 t1 t2
+	t7 = Load <command-line-arguments.Cons[a]> t6
+	t8 = Call <command-line-arguments.any> (command-line-arguments.Cons[a]).Match t7 t4 t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t8
+
+# Name: (*command-line-arguments.Cons[a command-line-arguments.any]).Match
+# Synthetic: wrapper
+func (t3 *command-line-arguments.Cons[a command-line-arguments.any]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"Match"}
+	t3 = Parameter <*command-line-arguments.Cons[a command-line-arguments.any]> {xs}
+	t4 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> {casenil}
+	t5 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> {casecons}
+	t6 = Call <*command-line-arguments.Cons[a command-line-arguments.any]> ir:wrapnilchk t3 t1 t2
+	t7 = Load <command-line-arguments.Cons[a command-line-arguments.any]> t6
+	t8 = Call <command-line-arguments.any> (command-line-arguments.Cons[a]).Match t7 t4 t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t8
+
+# Name: (command-line-arguments.Nil[a]).Match
+# Synthetic: generic
+func (t1 command-line-arguments.Nil[a]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Parameter <command-line-arguments.Nil[a]> {xs}
+	t2 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> {casenil}
+	t3 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> {casecons}
+	t4 = ChangeType <command-line-arguments.Nil[a]> t1
+	t5 = ChangeType <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> t2
+	t6 = ChangeType <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> t3
+	t7 = Call <command-line-arguments.any> (command-line-arguments.Nil[a]).Match a t4 t5 t6
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t7
+
+# Name: (*command-line-arguments.Nil[a]).Match
+# Synthetic: wrapper
+func (t3 *command-line-arguments.Nil[a]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"Match"}
+	t3 = Parameter <*command-line-arguments.Nil[a]> {xs}
+	t4 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> {casenil}
+	t5 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> {casecons}
+	t6 = Call <*command-line-arguments.Nil[a]> ir:wrapnilchk t3 t1 t2
+	t7 = Load <command-line-arguments.Nil[a]> t6
+	t8 = Call <command-line-arguments.any> (command-line-arguments.Nil[a]).Match t7 t4 t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t8
+
+# Name: (command-line-arguments.Cons[a]).Match
+# Synthetic: generic
+func (t1 command-line-arguments.Cons[a]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Parameter <command-line-arguments.Cons[a]> {xs}
+	t2 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> {casenil}
+	t3 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> {casecons}
+	t4 = ChangeType <command-line-arguments.Cons[a]> t1
+	t5 = ChangeType <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> t2
+	t6 = ChangeType <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> t3
+	t7 = Call <command-line-arguments.any> (command-line-arguments.Cons[a]).Match a t4 t5 t6
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t7
+
+# Name: (*command-line-arguments.Cons[a]).Match
+# Synthetic: wrapper
+func (t3 *command-line-arguments.Cons[a]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"Match"}
+	t3 = Parameter <*command-line-arguments.Cons[a]> {xs}
+	t4 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> {casenil}
+	t5 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> {casecons}
+	t6 = Call <*command-line-arguments.Cons[a]> ir:wrapnilchk t3 t1 t2
+	t7 = Load <command-line-arguments.Cons[a]> t6
+	t8 = Call <command-line-arguments.any> (command-line-arguments.Cons[a]).Match t7 t4 t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t8
+
+# Name: (command-line-arguments.incr).Apply
+# Package: command-line-arguments
+# Locals:
+#   0:	t2 incr
+func (t1 incr) Apply(x int) int:
+b0: # entry
+	t1 = Parameter <incr> {p}
+	t2 = StackAlloc <*incr>
+	Store {command-line-arguments.incr} t2 t1
+	t4 = Parameter <int> {x}
+	t5 = FieldAddr <*int> [0] (n) t2
+	t6 = Load <int> t5
+	t7 = BinOp <int> {+} t4 t6
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t7
+
+# Name: (command-line-arguments.pos).Apply
+# Package: command-line-arguments
+func (t2 pos) Apply(x int) bool:
+b0: # entry
+	t1 = Const <int> {0}
+	t2 = Parameter <pos> {p}
+	t3 = Parameter <int> {x}
+	t4 = BinOp <bool> {>} t3 t1
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t4
+
+# Name: (command-line-arguments.compose[a, b, c]).Apply
+# Package: command-line-arguments
+# Locals:
+#   0:	t2 compose[a, b, c]
+func (t1 compose[a, b, c]) Apply(x a) c:
+b0: # entry
+	t1 = Parameter <compose[a, b, c]> {p}
+	t2 = StackAlloc <*compose[a, b, c]>
+	Store {command-line-arguments.compose[a, b, c]} t2 t1
+	t4 = Parameter <a> {x}
+	t5 = FieldAddr <*Function[b, c]> [1] (g) t2
+	t6 = Load <Function[b, c]> t5
+	t7 = FieldAddr <*Function[a, b]> [0] (f) t2
+	t8 = Load <Function[a, b]> t7
+	t9 = CallInvoke <b> t8.Apply t4
+	t10 = CallInvoke <c> t6.Apply t9
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t10
+
+# Name: (command-line-arguments.Int).Equal
+# Package: command-line-arguments
+func (t1 Int) Equal(that int) bool:
+b0: # entry
+	t1 = Parameter <Int> {p}
+	t2 = Parameter <int> {that}
+	t3 = ChangeType <int> t1
+	t4 = BinOp <bool> {==} t3 t2
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t4
+
+# Name: (command-line-arguments.Nil[a]).Match
+# Package: command-line-arguments
+func (t1 Nil[a]) Match(casenil Function[Nil[a], any], casecons Function[Cons[a], any]) any:
+b0: # entry
+	t1 = Parameter <Nil[a]> {xs}
+	t2 = Parameter <Function[Nil[a], any]> {casenil}
+	t3 = Parameter <Function[Cons[a], any]> {casecons}
+	t4 = CallInvoke <any> t2.Apply t1
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t4
+
+# Name: (command-line-arguments.Cons[a]).Match
+# Package: command-line-arguments
+func (t1 Cons[a]) Match(casenil Function[Nil[a], any], casecons Function[Cons[a], any]) any:
+b0: # entry
+	t1 = Parameter <Cons[a]> {xs}
+	t2 = Parameter <Function[Nil[a], any]> {casenil}
+	t3 = Parameter <Function[Cons[a], any]> {casecons}
+	t4 = CallInvoke <any> t3.Apply t1
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t4
+
+# Name: (command-line-arguments.Nil[b]).Match
+# Synthetic: generic
+func (t1 command-line-arguments.Nil[b]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[b], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[b], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Parameter <command-line-arguments.Nil[b]> {xs}
+	t2 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[b], command-line-arguments.any]> {casenil}
+	t3 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[b], command-line-arguments.any]> {casecons}
+	t4 = ChangeType <command-line-arguments.Nil[a]> t1
+	t5 = ChangeType <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> t2
+	t6 = ChangeType <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> t3
+	t7 = Call <command-line-arguments.any> (command-line-arguments.Nil[a]).Match b t4 t5 t6
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t7
+
+# Name: (command-line-arguments.Cons[b]).Match
+# Synthetic: generic
+func (t1 command-line-arguments.Cons[b]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[b], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[b], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Parameter <command-line-arguments.Cons[b]> {xs}
+	t2 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[b], command-line-arguments.any]> {casenil}
+	t3 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[b], command-line-arguments.any]> {casecons}
+	t4 = ChangeType <command-line-arguments.Cons[a]> t1
+	t5 = ChangeType <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> t2
+	t6 = ChangeType <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> t3
+	t7 = Call <command-line-arguments.any> (command-line-arguments.Cons[a]).Match b t4 t5 t6
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t7
+
+# Name: (*command-line-arguments.Cons[b]).Match
+# Synthetic: wrapper
+func (t3 *command-line-arguments.Cons[b]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[b], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[b], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"Match"}
+	t3 = Parameter <*command-line-arguments.Cons[b]> {xs}
+	t4 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[b], command-line-arguments.any]> {casenil}
+	t5 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[b], command-line-arguments.any]> {casecons}
+	t6 = Call <*command-line-arguments.Cons[b]> ir:wrapnilchk t3 t1 t2
+	t7 = Load <command-line-arguments.Cons[b]> t6
+	t8 = Call <command-line-arguments.any> (command-line-arguments.Cons[b]).Match t7 t4 t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t8
+
+# Name: (*command-line-arguments.Nil[b]).Match
+# Synthetic: wrapper
+func (t3 *command-line-arguments.Nil[b]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[b], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[b], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"Match"}
+	t3 = Parameter <*command-line-arguments.Nil[b]> {xs}
+	t4 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[b], command-line-arguments.any]> {casenil}
+	t5 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[b], command-line-arguments.any]> {casecons}
+	t6 = Call <*command-line-arguments.Nil[b]> ir:wrapnilchk t3 t1 t2
+	t7 = Load <command-line-arguments.Nil[b]> t6
+	t8 = Call <command-line-arguments.any> (command-line-arguments.Nil[b]).Match t7 t4 t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t8
+
+# Name: (command-line-arguments.mapNil[a, b]).Apply
+# Package: command-line-arguments
+func (t2 mapNil[a, b]) Apply(_ Nil[a]) any:
+b0: # entry
+	t1 = AggregateConst <Nil[b]> ()
+	t2 = Parameter <mapNil[a, b]> {m}
+	t3 = Parameter <Nil[a]> {_}
+	t4 = MakeInterface <any> t1
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t4
+
+# Name: Map$generic#0
+# Synthetic: generic
+func Map$generic#0(f command-line-arguments.Function[a, b], xs command-line-arguments.List[a]) command-line-arguments.List[b]:
+b0: # entry
+	t1 = Parameter <command-line-arguments.Function[a, b]> {f}
+	t2 = Parameter <command-line-arguments.List[a]> {xs}
+	t3 = ChangeType <command-line-arguments.Function[a, b]> t1
+	t4 = ChangeType <command-line-arguments.List[a]> t2
+	t5 = Call <command-line-arguments.List[b]> command-line-arguments.Map a b t3 t4
+	t6 = ChangeType <command-line-arguments.List[b]> t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t6
+
+# Name: (command-line-arguments.Cons[b]).Match
+# Synthetic: generic
+func (t1 command-line-arguments.Cons[b]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[b], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[b], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Parameter <command-line-arguments.Cons[b]> {xs}
+	t2 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[b], command-line-arguments.any]> {casenil}
+	t3 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[b], command-line-arguments.any]> {casecons}
+	t4 = ChangeType <command-line-arguments.Cons[a]> t1
+	t5 = ChangeType <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> t2
+	t6 = ChangeType <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> t3
+	t7 = Call <command-line-arguments.any> (command-line-arguments.Cons[a]).Match b t4 t5 t6
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t7
+
+# Name: (command-line-arguments.Nil[b]).Match
+# Synthetic: generic
+func (t1 command-line-arguments.Nil[b]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[b], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[b], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Parameter <command-line-arguments.Nil[b]> {xs}
+	t2 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[b], command-line-arguments.any]> {casenil}
+	t3 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[b], command-line-arguments.any]> {casecons}
+	t4 = ChangeType <command-line-arguments.Nil[a]> t1
+	t5 = ChangeType <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> t2
+	t6 = ChangeType <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> t3
+	t7 = Call <command-line-arguments.any> (command-line-arguments.Nil[a]).Match b t4 t5 t6
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t7
+
+# Name: (*command-line-arguments.Nil[b]).Match
+# Synthetic: wrapper
+func (t3 *command-line-arguments.Nil[b]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[b], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[b], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"Match"}
+	t3 = Parameter <*command-line-arguments.Nil[b]> {xs}
+	t4 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[b], command-line-arguments.any]> {casenil}
+	t5 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[b], command-line-arguments.any]> {casecons}
+	t6 = Call <*command-line-arguments.Nil[b]> ir:wrapnilchk t3 t1 t2
+	t7 = Load <command-line-arguments.Nil[b]> t6
+	t8 = Call <command-line-arguments.any> (command-line-arguments.Nil[b]).Match t7 t4 t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t8
+
+# Name: (*command-line-arguments.Cons[b]).Match
+# Synthetic: wrapper
+func (t3 *command-line-arguments.Cons[b]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[b], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[b], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"Match"}
+	t3 = Parameter <*command-line-arguments.Cons[b]> {xs}
+	t4 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[b], command-line-arguments.any]> {casenil}
+	t5 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[b], command-line-arguments.any]> {casecons}
+	t6 = Call <*command-line-arguments.Cons[b]> ir:wrapnilchk t3 t1 t2
+	t7 = Load <command-line-arguments.Cons[b]> t6
+	t8 = Call <command-line-arguments.any> (command-line-arguments.Cons[b]).Match t7 t4 t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t8
+
+# Name: (command-line-arguments.mapCons[a, b]).Apply
+# Package: command-line-arguments
+# Locals:
+#   0:	t2 mapCons[a, b]
+#   1:	t5 Cons[a]
+#   2:	t7 Cons[b]
+func (t1 mapCons[a, b]) Apply(xs Cons[a]) any:
+b0: # entry
+	t1 = Parameter <mapCons[a, b]> {m}
+	t2 = StackAlloc <*mapCons[a, b]>
+	Store {command-line-arguments.mapCons[a, b]} t2 t1
+	t4 = Parameter <Cons[a]> {xs}
+	t5 = StackAlloc <*Cons[a]>
+	Store {command-line-arguments.Cons[a]} t5 t4
+	t7 = StackAlloc <*Cons[b]>
+	t8 = FieldAddr <*b> [0] (Head) t7
+	t9 = FieldAddr <*Function[a, b]> [0] (f) t2
+	t10 = Load <Function[a, b]> t9
+	t11 = FieldAddr <*a> [0] (Head) t5
+	t12 = Load <a> t11
+	t13 = CallInvoke <b> t10.Apply t12
+	t14 = FieldAddr <*List[b]> [1] (Tail) t7
+	t15 = FieldAddr <*Function[a, b]> [0] (f) t2
+	t16 = Load <Function[a, b]> t15
+	t17 = FieldAddr <*List[a]> [1] (Tail) t5
+	t18 = Load <List[a]> t17
+	t19 = Call <List[b]> Map$generic#0 t16 t18
+	Store {b} t8 t13
+	Store {command-line-arguments.List[b]} t14 t19
+	t22 = Load <Cons[b]> t7
+	t23 = MakeInterface <any> t22
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t23
+
+# Name: (command-line-arguments.mapNil[a, b]).Apply
+# Synthetic: generic
+func (t1 command-line-arguments.mapNil[a, b]) Apply(_ command-line-arguments.Nil[a]) command-line-arguments.any:
+b0: # entry
+	t1 = Parameter <command-line-arguments.mapNil[a, b]> {m}
+	t2 = Parameter <command-line-arguments.Nil[a]> {_}
+	t3 = ChangeType <command-line-arguments.mapNil[a, b]> t1
+	t4 = ChangeType <command-line-arguments.Nil[a]> t2
+	t5 = Call <command-line-arguments.any> (command-line-arguments.mapNil[a, b]).Apply a b t3 t4
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t5
+
+# Name: (*command-line-arguments.mapNil[a, b]).Apply
+# Synthetic: wrapper
+func (t3 *command-line-arguments.mapNil[a, b]) Apply(_ command-line-arguments.Nil[a]) command-line-arguments.any:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"Apply"}
+	t3 = Parameter <*command-line-arguments.mapNil[a, b]> {m}
+	t4 = Parameter <command-line-arguments.Nil[a]> {_}
+	t5 = Call <*command-line-arguments.mapNil[a, b]> ir:wrapnilchk t3 t1 t2
+	t6 = Load <command-line-arguments.mapNil[a, b]> t5
+	t7 = Call <command-line-arguments.any> (command-line-arguments.mapNil[a, b]).Apply t6 t4
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t7
+
+# Name: (command-line-arguments.mapCons[a, b]).Apply
+# Synthetic: generic
+func (t1 command-line-arguments.mapCons[a, b]) Apply(xs command-line-arguments.Cons[a]) command-line-arguments.any:
+b0: # entry
+	t1 = Parameter <command-line-arguments.mapCons[a, b]> {m}
+	t2 = Parameter <command-line-arguments.Cons[a]> {xs}
+	t3 = ChangeType <command-line-arguments.mapCons[a, b]> t1
+	t4 = ChangeType <command-line-arguments.Cons[a]> t2
+	t5 = Call <command-line-arguments.any> (command-line-arguments.mapCons[a, b]).Apply a b t3 t4
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t5
+
+# Name: (*command-line-arguments.mapCons[a, b]).Apply
+# Synthetic: wrapper
+func (t3 *command-line-arguments.mapCons[a, b]) Apply(xs command-line-arguments.Cons[a]) command-line-arguments.any:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"Apply"}
+	t3 = Parameter <*command-line-arguments.mapCons[a, b]> {m}
+	t4 = Parameter <command-line-arguments.Cons[a]> {xs}
+	t5 = Call <*command-line-arguments.mapCons[a, b]> ir:wrapnilchk t3 t1 t2
+	t6 = Load <command-line-arguments.mapCons[a, b]> t5
+	t7 = Call <command-line-arguments.any> (command-line-arguments.mapCons[a, b]).Apply t6 t4
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t7
+
+# Name: command-line-arguments.Map
+# Package: command-line-arguments
+# Locals:
+#   0:	t4 mapCons[a, b]
+func Map[a, b any](f Function[a, b], xs List[a]) List[b]:
+b0: # entry
+	t1 = AggregateConst <mapNil[a, b]> ()
+	t2 = Parameter <Function[a, b]> {f}
+	t3 = Parameter <List[a]> {xs}
+	t4 = StackAlloc <*mapCons[a, b]>
+	t5 = FieldAddr <*Function[a, b]> [0] (f) t4
+	Store {command-line-arguments.Function[a, b]} t5 t2
+	t7 = Load <mapCons[a, b]> t4
+	t8 = MakeInterface <Function[Nil[a], any]> t1
+	t9 = MakeInterface <Function[Cons[a], any]> t7
+	t10 = CallInvoke <any> t3.Match t8 t9
+	t11 = TypeAssert <List[b]> t10
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t11
+
+# Name: (command-line-arguments.Nil[int]).Match
+# Synthetic: generic
+func (t1 command-line-arguments.Nil[int]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[int], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[int], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Parameter <command-line-arguments.Nil[int]> {xs}
+	t2 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[int], command-line-arguments.any]> {casenil}
+	t3 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[int], command-line-arguments.any]> {casecons}
+	t4 = ChangeType <command-line-arguments.Nil[a]> t1
+	t5 = ChangeType <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> t2
+	t6 = ChangeType <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> t3
+	t7 = Call <command-line-arguments.any> (command-line-arguments.Nil[a]).Match int t4 t5 t6
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t7
+
+# Name: (command-line-arguments.Cons[int]).Match
+# Synthetic: generic
+func (t1 command-line-arguments.Cons[int]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[int], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[int], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Parameter <command-line-arguments.Cons[int]> {xs}
+	t2 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[int], command-line-arguments.any]> {casenil}
+	t3 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[int], command-line-arguments.any]> {casecons}
+	t4 = ChangeType <command-line-arguments.Cons[a]> t1
+	t5 = ChangeType <command-line-arguments.Function[command-line-arguments.Nil[a], command-line-arguments.any]> t2
+	t6 = ChangeType <command-line-arguments.Function[command-line-arguments.Cons[a], command-line-arguments.any]> t3
+	t7 = Call <command-line-arguments.any> (command-line-arguments.Cons[a]).Match int t4 t5 t6
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t7
+
+# Name: (*command-line-arguments.Cons[int]).Match
+# Synthetic: wrapper
+func (t3 *command-line-arguments.Cons[int]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[int], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[int], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"Match"}
+	t3 = Parameter <*command-line-arguments.Cons[int]> {xs}
+	t4 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[int], command-line-arguments.any]> {casenil}
+	t5 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[int], command-line-arguments.any]> {casecons}
+	t6 = Call <*command-line-arguments.Cons[int]> ir:wrapnilchk t3 t1 t2
+	t7 = Load <command-line-arguments.Cons[int]> t6
+	t8 = Call <command-line-arguments.any> (command-line-arguments.Cons[int]).Match t7 t4 t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t8
+
+# Name: (*command-line-arguments.Nil[int]).Match
+# Synthetic: wrapper
+func (t3 *command-line-arguments.Nil[int]) Match(casenil command-line-arguments.Function[command-line-arguments.Nil[int], command-line-arguments.any], casecons command-line-arguments.Function[command-line-arguments.Cons[int], command-line-arguments.any]) command-line-arguments.any:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"Match"}
+	t3 = Parameter <*command-line-arguments.Nil[int]> {xs}
+	t4 = Parameter <command-line-arguments.Function[command-line-arguments.Nil[int], command-line-arguments.any]> {casenil}
+	t5 = Parameter <command-line-arguments.Function[command-line-arguments.Cons[int], command-line-arguments.any]> {casecons}
+	t6 = Call <*command-line-arguments.Nil[int]> ir:wrapnilchk t3 t1 t2
+	t7 = Load <command-line-arguments.Nil[int]> t6
+	t8 = Call <command-line-arguments.any> (command-line-arguments.Nil[int]).Match t7 t4 t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t8
+
+# Name: Map$generic#1
+# Synthetic: generic
+func Map$generic#1(f command-line-arguments.Function[int, int], xs command-line-arguments.List[int]) command-line-arguments.List[int]:
+b0: # entry
+	t1 = Parameter <command-line-arguments.Function[int, int]> {f}
+	t2 = Parameter <command-line-arguments.List[int]> {xs}
+	t3 = ChangeType <command-line-arguments.Function[a, b]> t1
+	t4 = ChangeType <command-line-arguments.List[a]> t2
+	t5 = Call <command-line-arguments.List[b]> command-line-arguments.Map int int t3 t4
+	t6 = ChangeType <command-line-arguments.List[int]> t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t6
+
+# Name: (*command-line-arguments.incr).Apply
+# Synthetic: wrapper
+func (t3 *command-line-arguments.incr) Apply(x int) int:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"Apply"}
+	t3 = Parameter <*command-line-arguments.incr> {p}
+	t4 = Parameter <int> {x}
+	t5 = Call <*command-line-arguments.incr> ir:wrapnilchk t3 t1 t2
+	t6 = Load <command-line-arguments.incr> t5
+	t7 = Call <int> (command-line-arguments.incr).Apply t6 t4
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t7
+
+# Name: Map$generic#2
+# Synthetic: generic
+func Map$generic#2(f command-line-arguments.Function[int, bool], xs command-line-arguments.List[int]) command-line-arguments.List[bool]:
+b0: # entry
+	t1 = Parameter <command-line-arguments.Function[int, bool]> {f}
+	t2 = Parameter <command-line-arguments.List[int]> {xs}
+	t3 = ChangeType <command-line-arguments.Function[a, b]> t1
+	t4 = ChangeType <command-line-arguments.List[a]> t2
+	t5 = Call <command-line-arguments.List[b]> command-line-arguments.Map int bool t3 t4
+	t6 = ChangeType <command-line-arguments.List[bool]> t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t6
+
+# Name: (*command-line-arguments.pos).Apply
+# Synthetic: wrapper
+func (t3 *command-line-arguments.pos) Apply(x int) bool:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"Apply"}
+	t3 = Parameter <*command-line-arguments.pos> {p}
+	t4 = Parameter <int> {x}
+	t5 = Call <*command-line-arguments.pos> ir:wrapnilchk t3 t1 t2
+	t6 = Load <command-line-arguments.pos> t5
+	t7 = Call <bool> (command-line-arguments.pos).Apply t6 t4
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t7
+
+# Name: command-line-arguments.main
+# Package: command-line-arguments
+# Locals:
+#   0:	t10 Cons[int]
+#   1:	t13 Cons[int]
+#   2:	t25 incr
+#   3:	t33 Cons[bool]
+#   4:	t36 Cons[bool]
+func main():
+b0: # entry
+	t1 = Const <int> {3}
+	t2 = Const <int> {6}
+	t3 = Const <int> {-5}
+	t4 = Const <string> {"got %v, %v, %v, e..."}
+	t5 = Const <int> {0}
+	t6 = Const <int> {1}
+	t7 = Const <int> {2}
+	t8 = AggregateConst <Nil[int]> ()
+	t9 = AggregateConst <pos> ()
+	t10 = StackAlloc <*Cons[int]>
+	t11 = FieldAddr <*int> [0] (Head) t10
+	t12 = FieldAddr <*List[int]> [1] (Tail) t10
+	t13 = StackAlloc <*Cons[int]>
+	t14 = FieldAddr <*int> [0] (Head) t13
+	t15 = FieldAddr <*List[int]> [1] (Tail) t13
+	Store {int} t14 t2
+	t17 = MakeInterface <List[int]> t8
+	Store {command-line-arguments.List[int]} t15 t17
+	t19 = Load <Cons[int]> t13
+	Store {int} t11 t1
+	t21 = MakeInterface <List[int]> t19
+	Store {command-line-arguments.List[int]} t12 t21
+	t23 = Load <Cons[int]> t10
+	t24 = MakeInterface <List[int]> t23
+	t25 = StackAlloc <*incr>
+	t26 = FieldAddr <*int> [0] (n) t25
+	Store {int} t26 t3
+	t28 = Load <incr> t25
+	t29 = MakeInterface <Function[int, int]> t28
+	t30 = Call <List[int]> Map$generic#1 t29 t24
+	t31 = MakeInterface <Function[int, bool]> t9
+	t32 = Call <List[bool]> Map$generic#2 t31 t30
+	t33 = StackAlloc <*Cons[bool]>
+	t34 = TypeAssert <Cons[bool]> t32
+	Store {command-line-arguments.Cons[bool]} t33 t34
+	t36 = StackAlloc <*Cons[bool]>
+	t37 = FieldAddr <*List[bool]> [1] (Tail) t33
+	t38 = Load <List[bool]> t37
+	t39 = TypeAssert <Cons[bool]> t38
+	Store {command-line-arguments.Cons[bool]} t36 t39
+	t41 = FieldAddr <*List[bool]> [1] (Tail) t36
+	t42 = Load <List[bool]> t41
+	t43 = TypeAssert <(value Nil[bool], ok bool)> t42
+	t44 = Extract <Nil[bool]> [0] (value) t43
+	BlankStore t44
+	t46 = Extract <bool> [1] (ok) t43
+	t47 = FieldAddr <*bool> [0] (Head) t33
+	t48 = Load <bool> t47
+	If t48 → b2 b4
+
+b1: ← b2 b3 # exit
+	Return
+
+b2: ← b0 b4 b3 # if.then
+	t51 = Sigma <bool> [b0] t46
+	t52 = Sigma <bool> [b4] t75
+	t53 = Sigma <bool> [b3] t73
+	t54 = Phi <bool> 0:t51 4:t52 3:t53
+	t55 = FieldAddr <*bool> [0] (Head) t33
+	t56 = Load <bool> t55
+	t57 = FieldAddr <*bool> [0] (Head) t36
+	t58 = Load <bool> t57
+	t59 = HeapAlloc <*[3]any>
+	t60 = IndexAddr <*any> t59 t5
+	t61 = MakeInterface <any> t56
+	Store {any} t60 t61
+	t63 = IndexAddr <*any> t59 t6
+	t64 = MakeInterface <any> t58
+	Store {any} t63 t64
+	t66 = IndexAddr <*any> t59 t7
+	t67 = MakeInterface <any> t54
+	Store {any} t66 t67
+	t69 = Slice <[]any> t59 <nil> <nil> <nil>
+	t70 = Call <string> fmt.Sprintf t4 t69
+	t71 = MakeInterface <interface{}> t70
+	Panic t71 → b1
+
+b3: ← b4 # cond.false
+	t73 = Sigma <bool> [b4] t75
+	If t73 → b1 b2
+
+b4: ← b0 # cond.false
+	t75 = Sigma <bool> [b0] t46
+	t76 = FieldAddr <*bool> [0] (Head) t36
+	t77 = Load <bool> t76
+	If t77 → b3 b2
+
+# Name: command-line-arguments.init
+# Package: command-line-arguments
+# Synthetic: package initializer
+func init():
+b0: # entry
+	t1 = Const <bool> {true}
+	t2 = Load <bool> init$guard
+	If t2 → b1 b2
+
+b1: ← b0 b2 # exit
+	Return
+
+b2: ← b0 # init.start
+	Store {bool} init$guard t1
+	t6 = Call <()> fmt.init
+	Jump → b1

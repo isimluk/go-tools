@@ -1,9 +1,9 @@
 # Name: command-line-arguments.fn1
 # Package: command-line-arguments
-func fn1[T *S](x T):
+func fn1[a *S](x a):
 b0: # entry
 	t1 = Const <int> {5}
-	t2 = Parameter <T> {x}
+	t2 = Parameter <a> {x}
 	t3 = FieldAddr <*E> [0] (E) t2
 	t4 = FieldAddr <*int> [0] (val) t3
 	Store {int} t4 t1
@@ -15,11 +15,11 @@ b1: ← b0 # exit
 # Name: command-line-arguments.fn2
 # Package: command-line-arguments
 # Locals:
-#   0:	t2 T
-func fn2[T S]():
+#   0:	t2 b
+func fn2[b S]():
 b0: # entry
 	t1 = Const <int> {5}
-	t2 = StackAlloc <*T>
+	t2 = StackAlloc <*b>
 	t3 = FieldAddr <*E> [0] (E) t2
 	t4 = FieldAddr <*int> [0] (val) t3
 	Store {int} t4 t1

@@ -32,19 +32,19 @@ func main() {
 	}
 
 	if got := min[float64](3.5, 2.0); got != want {
-		panic(fmt.Sprintf("got %d, want %d", got, want))
+		panic(fmt.Sprintf("got %f, want %d", got, want))
 	}
 
 	if got := min(3.5, 2.0); got != want {
-		panic(fmt.Sprintf("got %d, want %d", got, want))
+		panic(fmt.Sprintf("got %f, want %d", got, want))
 	}
 
 	const want2 = "ay"
 	if got := min[string]("bb", "ay"); got != want2 {
-		panic(fmt.Sprintf("got %d, want %d", got, want2))
+		panic(fmt.Sprintf("got %s, want %s", got, want2))
 	}
 
 	if got := min("bb", "ay"); got != want2 {
-		panic(fmt.Sprintf("got %d, want %d", got, want2))
+		panic(fmt.Sprintf("got %s, want %s", got, want2))
 	}
 }

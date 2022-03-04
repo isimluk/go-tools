@@ -18,13 +18,13 @@ type Function[a, b any] interface {
 
 type incr struct{ n int }
 
-func (this incr) Apply(x int) int {
-	return x + this.n
+func (p incr) Apply(x int) int {
+	return x + p.n
 }
 
 type pos struct{}
 
-func (this pos) Apply(x int) bool {
+func (p pos) Apply(x int) bool {
 	return x > 0
 }
 
@@ -33,8 +33,8 @@ type compose[a, b, c any] struct {
 	g Function[b, c]
 }
 
-func (this compose[a, b, c]) Apply(x a) c {
-	return this.g.Apply(this.f.Apply(x))
+func (p compose[a, b, c]) Apply(x a) c {
+	return p.g.Apply(p.f.Apply(x))
 }
 
 type _Eq[a any] interface {
@@ -43,8 +43,8 @@ type _Eq[a any] interface {
 
 type Int int
 
-func (this Int) Equal(that int) bool {
-	return int(this) == that
+func (p Int) Equal(that int) bool {
+	return int(p) == that
 }
 
 type List[a any] interface {
@@ -93,8 +93,7 @@ func main() {
 	cs1 := xz.(Cons[bool])
 	cs2 := cs1.Tail.(Cons[bool])
 	_, ok := cs2.Tail.(Nil[bool])
-	if cs1.Head != false || cs2.Head != true || !ok {
-		panic(fmt.Sprintf("got %v, %v, %v, expected false, true, true",
-			cs1.Head, cs2.Head, ok))
+	if cs1.Head || !cs2.Head || !ok {
+		panic(fmt.Sprintf("got %v, %v, %v, expected false, true, true", cs1.Head, cs2.Head, ok))
 	}
 }

@@ -6,15 +6,15 @@
 
 package main
 
-type A[T any] struct {
-	field B[T]
+type A[a any] struct {
+	field B[a]
 }
 
-type B[T any] interface {
-	Work(T)
+type B[b any] interface {
+	Work(b)
 }
 
-func (a *A[T]) Work(t T) {
+func (a *A[c]) Work(t c) {
 	a.field.Work(t)
 }
 

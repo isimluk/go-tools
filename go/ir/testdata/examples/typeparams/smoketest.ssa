@@ -1,0 +1,155 @@
+# Name: (*command-line-arguments.T1[P any]).m1
+# Synthetic: wrapper
+func (t3 *command-line-arguments.T1[P any]) m1():
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"m1"}
+	t3 = Parameter <*command-line-arguments.T1[P any]> {arg0}
+	t4 = Call <*command-line-arguments.T1[P any]> ir:wrapnilchk t3 t1 t2
+	t5 = Load <command-line-arguments.T1[P any]> t4
+	t6 = Call <()> (command-line-arguments.T1[P]).m1 t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: (*command-line-arguments.T1[P any]).m2
+# Synthetic: wrapper
+func (t3 *command-line-arguments.T1[P any]) m2():
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"m2"}
+	t3 = Parameter <*command-line-arguments.T1[P any]> {arg0}
+	t4 = Call <*command-line-arguments.T1[P any]> ir:wrapnilchk t3 t1 t2
+	t5 = Load <command-line-arguments.T1[P any]> t4
+	t6 = Call <()> (command-line-arguments.T1[_]).m2 t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: (*command-line-arguments.T2[P1, P2, P3 any]).m
+# Synthetic: wrapper
+func (t3 *command-line-arguments.T2[P1, P2, P3 any]) m():
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"m"}
+	t3 = Parameter <*command-line-arguments.T2[P1, P2, P3 any]> {x}
+	t4 = Call <*command-line-arguments.T2[P1, P2, P3 any]> ir:wrapnilchk t3 t1 t2
+	t5 = Load <command-line-arguments.T2[P1, P2, P3 any]> t4
+	t6 = Call <()> (command-line-arguments.T2[P1, P2, P3]).m t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: f1$generic#0
+# Synthetic: generic
+func f1$generic#0():
+b0: # entry
+	t1 = Call <()> command-line-arguments.f1 int
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: f2$generic#0
+# Synthetic: generic
+func f2$generic#0():
+b0: # entry
+	t1 = Call <()> command-line-arguments.f2 int string struct{}
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: f3$generic#0
+# Synthetic: generic
+func f3$generic#0(x bool, y command-line-arguments.T1[int]):
+b0: # entry
+	t1 = Parameter <bool> {x}
+	t2 = Parameter <command-line-arguments.T1[int]> {y}
+	t3 = ChangeType <P> t1
+	t4 = Call <()> command-line-arguments.f3 bool t3 t2
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: command-line-arguments.f1
+# Package: command-line-arguments
+func f1[P any]():
+b0: # entry
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: command-line-arguments.f2
+# Package: command-line-arguments
+func f2[P1, P2, P3 any]():
+b0: # entry
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: command-line-arguments.f3
+# Package: command-line-arguments
+func f3[P interface{}](x P, y T1[int]):
+b0: # entry
+	t1 = Parameter <P> {x}
+	t2 = Parameter <T1[int]> {y}
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: (command-line-arguments.T1[P]).m1
+# Package: command-line-arguments
+func (t1 T1[P]) m1():
+b0: # entry
+	t1 = Parameter <T1[P]> {arg0}
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: (command-line-arguments.T1[_]).m2
+# Package: command-line-arguments
+func (t1 T1[_]) m2():
+b0: # entry
+	t1 = Parameter <T1[_]> {arg0}
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: (command-line-arguments.T2[P1, P2, P3]).m
+# Package: command-line-arguments
+func (t1 T2[P1, P2, P3]) m():
+b0: # entry
+	t1 = Parameter <T2[P1, P2, P3]> {x}
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: command-line-arguments.init
+# Package: command-line-arguments
+# Synthetic: package initializer
+func init():
+b0: # entry
+	t1 = Const <bool> {true}
+	t2 = Load <bool> init$guard
+	If t2 → b1 b2
+
+b1: ← b0 b2 # exit
+	Return
+
+b2: ← b0 # init.start
+	Store {bool} init$guard t1
+	BlankStore f1$generic#0
+	BlankStore f2$generic#0
+	BlankStore f3$generic#0
+	Jump → b1

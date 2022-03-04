@@ -33,10 +33,10 @@ func main() {
 
 	want1 := 1.2
 	if got := Smallest(vec1); got != want1 {
-		panic(fmt.Sprintf("got %d, want %d", got, want1))
+		panic(fmt.Sprintf("got %f, want %f", got, want1))
 	}
 	want2 := "aaa"
 	if got := Smallest(vec2); got != want2 {
-		panic(fmt.Sprintf("got %d, want %d", got, want2))
+		panic(fmt.Sprintf("got %s, want %s", got, want2))
 	}
 }

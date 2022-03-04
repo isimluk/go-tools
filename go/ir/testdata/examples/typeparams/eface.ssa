@@ -1,0 +1,242 @@
+# Name: command-line-arguments.f
+# Package: command-line-arguments
+func f[T any](x E[T]) interface{}:
+b0: # entry
+	t1 = Parameter <E[T]> {x}
+	t2 = ChangeInterface <interface{}> t1
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t2
+
+# Name: command-line-arguments.g
+# Package: command-line-arguments
+func g[T any](x interface{}) E[T]:
+b0: # entry
+	t1 = Parameter <interface{}> {x}
+	t2 = ChangeInterface <E[T]> t1
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t2
+
+# Name: (command-line-arguments.myint).foo
+# Package: command-line-arguments
+func (t1 myint) foo():
+b0: # entry
+	t1 = Parameter <myint> {x}
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: command-line-arguments.h
+# Package: command-line-arguments
+func h[T any](x I[T]) interface{foo()}:
+b0: # entry
+	t1 = Parameter <I[T]> {x}
+	t2 = ChangeInterface <interface{foo()}> t1
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t2
+
+# Name: command-line-arguments.i
+# Package: command-line-arguments
+func i[T any](x interface{foo()}) I[T]:
+b0: # entry
+	t1 = Parameter <interface{foo()}> {x}
+	t2 = ChangeInterface <I[T]> t1
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t2
+
+# Name: f$generic#0
+# Synthetic: generic
+func f$generic#0(x command-line-arguments.E[int]) interface{}:
+b0: # entry
+	t1 = Parameter <command-line-arguments.E[int]> {x}
+	t2 = ChangeType <command-line-arguments.E[T]> t1
+	t3 = Call <interface{}> command-line-arguments.f int t2
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t3
+
+# Name: g$generic#0
+# Synthetic: generic
+func g$generic#0(x interface{}) command-line-arguments.E[int]:
+b0: # entry
+	t1 = Parameter <interface{}> {x}
+	t2 = Call <command-line-arguments.E[T]> command-line-arguments.g int t1
+	t3 = ChangeType <command-line-arguments.E[int]> t2
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t3
+
+# Name: h$generic#0
+# Synthetic: generic
+func h$generic#0(x command-line-arguments.I[int]) interface{foo()}:
+b0: # entry
+	t1 = Parameter <command-line-arguments.I[int]> {x}
+	t2 = ChangeType <command-line-arguments.I[T]> t1
+	t3 = Call <interface{foo()}> command-line-arguments.h int t2
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t3
+
+# Name: (*command-line-arguments.myint).foo
+# Synthetic: wrapper
+func (t3 *command-line-arguments.myint) foo():
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"foo"}
+	t3 = Parameter <*command-line-arguments.myint> {x}
+	t4 = Call <*command-line-arguments.myint> ir:wrapnilchk t3 t1 t2
+	t5 = Load <command-line-arguments.myint> t4
+	t6 = Call <()> (command-line-arguments.myint).foo t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: i$generic#0
+# Synthetic: generic
+func i$generic#0(x interface{foo()}) command-line-arguments.I[int]:
+b0: # entry
+	t1 = Parameter <interface{foo()}> {x}
+	t2 = Call <command-line-arguments.I[T]> command-line-arguments.i int t1
+	t3 = ChangeType <command-line-arguments.I[int]> t2
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t3
+
+# Name: command-line-arguments.main
+# Package: command-line-arguments
+func main():
+b0: # entry
+	t1 = Const <int> {1}
+	t2 = Const <string> {"test 1 failed"}
+	t3 = Const <int> {2}
+	t4 = Const <string> {"test 2 failed"}
+	t5 = Const <int> {3}
+	t6 = Const <string> {"test 3 failed"}
+	t7 = Const <int> {4}
+	t8 = Const <string> {"test 4 failed"}
+	t9 = Const <myint> {5}
+	t10 = Const <string> {"test 5 failed"}
+	t11 = Const <myint> {6}
+	t12 = Const <string> {"test 6 failed"}
+	t13 = Const <myint> {7}
+	t14 = Const <string> {"test 7 failed"}
+	t15 = Const <myint> {8}
+	t16 = Const <string> {"test 8 failed"}
+	t17 = MakeInterface <E[int]> t1
+	t18 = Call <interface{}> f$generic#0 t17
+	t19 = MakeInterface <interface{}> t1
+	t20 = BinOp <bool> {!=} t18 t19
+	If t20 → b2 b3
+
+b1: ← b15 b16 # exit
+	Return
+
+b2: ← b0 # if.then
+	t23 = Call <()> println t2
+	Jump → b3
+
+b3: ← b0 b2 # if.done
+	t25 = MakeInterface <E[int]> t3
+	t26 = Call <interface{}> f$generic#0 t25
+	t27 = MakeInterface <interface{}> t3
+	t28 = BinOp <bool> {!=} t26 t27
+	If t28 → b4 b5
+
+b4: ← b3 # if.then
+	t30 = Call <()> println t4
+	Jump → b5
+
+b5: ← b3 b4 # if.done
+	t32 = MakeInterface <interface{}> t5
+	t33 = Call <E[int]> g$generic#0 t32
+	t34 = MakeInterface <E[int]> t5
+	t35 = BinOp <bool> {!=} t33 t34
+	If t35 → b6 b7
+
+b6: ← b5 # if.then
+	t37 = Call <()> println t6
+	Jump → b7
+
+b7: ← b5 b6 # if.done
+	t39 = MakeInterface <interface{}> t7
+	t40 = Call <E[int]> g$generic#0 t39
+	t41 = MakeInterface <E[int]> t7
+	t42 = BinOp <bool> {!=} t40 t41
+	If t42 → b8 b9
+
+b8: ← b7 # if.then
+	t44 = Call <()> println t8
+	Jump → b9
+
+b9: ← b7 b8 # if.done
+	t46 = MakeInterface <I[int]> t9
+	t47 = Call <interface{foo()}> h$generic#0 t46
+	t48 = MakeInterface <interface{foo()}> t9
+	t49 = BinOp <bool> {!=} t47 t48
+	If t49 → b10 b11
+
+b10: ← b9 # if.then
+	t51 = Call <()> println t10
+	Jump → b11
+
+b11: ← b9 b10 # if.done
+	t53 = MakeInterface <I[int]> t11
+	t54 = Call <interface{foo()}> h$generic#0 t53
+	t55 = MakeInterface <interface{foo()}> t11
+	t56 = BinOp <bool> {!=} t54 t55
+	If t56 → b12 b13
+
+b12: ← b11 # if.then
+	t58 = Call <()> println t12
+	Jump → b13
+
+b13: ← b11 b12 # if.done
+	t60 = MakeInterface <interface{foo()}> t13
+	t61 = Call <I[int]> i$generic#0 t60
+	t62 = MakeInterface <I[int]> t13
+	t63 = BinOp <bool> {!=} t61 t62
+	If t63 → b14 b15
+
+b14: ← b13 # if.then
+	t65 = Call <()> println t14
+	Jump → b15
+
+b15: ← b13 b14 # if.done
+	t67 = MakeInterface <interface{foo()}> t15
+	t68 = Call <I[int]> i$generic#0 t67
+	t69 = MakeInterface <I[int]> t15
+	t70 = BinOp <bool> {!=} t68 t69
+	If t70 → b16 b1
+
+b16: ← b15 # if.then
+	t72 = Call <()> println t16
+	Jump → b1
+
+# Name: command-line-arguments.init
+# Package: command-line-arguments
+# Synthetic: package initializer
+func init():
+b0: # entry
+	t1 = Const <bool> {true}
+	t2 = Load <bool> init$guard
+	If t2 → b1 b2
+
+b1: ← b0 b2 # exit
+	Return
+
+b2: ← b0 # init.start
+	Store {bool} init$guard t1
+	Jump → b1

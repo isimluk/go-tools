@@ -1,0 +1,335 @@
+# Name: command-line-arguments.stringify
+# Package: command-line-arguments
+func stringify[T Stringer](s []T) (ret []string):
+b0: # entry
+	t1 = Const <int> {-1}
+	t2 = Const <int> {1}
+	t3 = Const <int> {0}
+	t4 = Const <[]string> {nil}
+	t5 = Parameter <[]T> {s}
+	t6 = Call <int> len t5
+	Jump → b2
+
+b1: ← b4 # exit
+	Return t29
+
+b2: ← b0 b3 # rangeindex.loop
+	t9 = Phi <[]string> 0:t4 3:t27
+	t10 = Phi <[]T> 0:t5 3:t17
+	t11 = Phi <int> 0:t6 3:t18
+	t12 = Phi <int> 0:t1 3:t19
+	t13 = BinOp <int> {+} t12 t2
+	t14 = BinOp <bool> {<} t13 t11
+	If t14 → b3 b4
+
+b3: ← b2 # rangeindex.body
+	t16 = Sigma <[]string> [b2] t9
+	t17 = Sigma <[]T> [b2] t10
+	t18 = Sigma <int> [b2] t11
+	t19 = Sigma <int> [b2] t13
+	t20 = IndexAddr <*T> t17 t19
+	t21 = Load <T> t20
+	t22 = CallInvoke <string> t21.String
+	t23 = HeapAlloc <*[1]string>
+	t24 = IndexAddr <*string> t23 t3
+	Store {string} t24 t22
+	t26 = Slice <[]string> t23 <nil> <nil> <nil>
+	t27 = Call <[]string> append t16 t26
+	Jump → b2
+
+b4: ← b2 # rangeindex.done
+	t29 = Sigma <[]string> [b2] t9
+	Jump → b1
+
+# Name: (command-line-arguments.myint).String
+# Package: command-line-arguments
+func (t1 myint) String() string:
+b0: # entry
+	t1 = Parameter <myint> {i}
+	t2 = ChangeType <int> t1
+	t3 = Call <string> strconv.Itoa t2
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t3
+
+# Name: command-line-arguments.stringify2
+# Package: command-line-arguments
+func stringify2[T Stringer2](s []T) (ret []string):
+b0: # entry
+	t1 = Const <int> {-1}
+	t2 = Const <int> {1}
+	t3 = Const <int> {0}
+	t4 = Const <[]string> {nil}
+	t5 = Parameter <[]T> {s}
+	t6 = Call <int> len t5
+	Jump → b2
+
+b1: ← b4 # exit
+	Return t29
+
+b2: ← b0 b3 # rangeindex.loop
+	t9 = Phi <[]string> 0:t4 3:t27
+	t10 = Phi <[]T> 0:t5 3:t17
+	t11 = Phi <int> 0:t6 3:t18
+	t12 = Phi <int> 0:t1 3:t19
+	t13 = BinOp <int> {+} t12 t2
+	t14 = BinOp <bool> {<} t13 t11
+	If t14 → b3 b4
+
+b3: ← b2 # rangeindex.body
+	t16 = Sigma <[]string> [b2] t9
+	t17 = Sigma <[]T> [b2] t10
+	t18 = Sigma <int> [b2] t11
+	t19 = Sigma <int> [b2] t13
+	t20 = IndexAddr <*T> t17 t19
+	t21 = Load <T> t20
+	t22 = CallInvoke <string> t21.String
+	t23 = HeapAlloc <*[1]string>
+	t24 = IndexAddr <*string> t23 t3
+	Store {string} t24 t22
+	t26 = Slice <[]string> t23 <nil> <nil> <nil>
+	t27 = Call <[]string> append t16 t26
+	Jump → b2
+
+b4: ← b2 # rangeindex.done
+	t29 = Sigma <[]string> [b2] t9
+	Jump → b1
+
+# Name: (command-line-arguments.myint).CanBeStringer2
+# Package: command-line-arguments
+func (t2 myint) CanBeStringer2() int:
+b0: # entry
+	t1 = Const <int> {0}
+	t2 = Parameter <myint> {arg0}
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t1
+
+# Name: (command-line-arguments.myint).CanBeSubStringer2
+# Package: command-line-arguments
+func (t2 myint) CanBeSubStringer2() int:
+b0: # entry
+	t1 = Const <int> {0}
+	t2 = Parameter <myint> {arg0}
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t1
+
+# Name: (command-line-arguments.Stringer).String$bound
+# Synthetic: bound
+# Free variables:
+#   0:	recv command-line-arguments.Stringer
+func String$bound() string:
+b0: # entry
+	t1 = CallInvoke <string> recv.String
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t1
+
+# Name: command-line-arguments.stringify3
+# Package: command-line-arguments
+func stringify3[T Stringer](s []T) (ret []string):
+b0: # entry
+	t1 = Const <int> {-1}
+	t2 = Const <int> {1}
+	t3 = Const <int> {0}
+	t4 = Const <[]string> {nil}
+	t5 = Parameter <[]T> {s}
+	t6 = Call <int> len t5
+	Jump → b2
+
+b1: ← b4 # exit
+	Return t31
+
+b2: ← b0 b3 # rangeindex.loop
+	t9 = Phi <[]string> 0:t4 3:t29
+	t10 = Phi <[]T> 0:t5 3:t17
+	t11 = Phi <int> 0:t6 3:t18
+	t12 = Phi <int> 0:t1 3:t19
+	t13 = BinOp <int> {+} t12 t2
+	t14 = BinOp <bool> {<} t13 t11
+	If t14 → b3 b4
+
+b3: ← b2 # rangeindex.body
+	t16 = Sigma <[]string> [b2] t9
+	t17 = Sigma <[]T> [b2] t10
+	t18 = Sigma <int> [b2] t11
+	t19 = Sigma <int> [b2] t13
+	t20 = IndexAddr <*T> t17 t19
+	t21 = Load <T> t20
+	t22 = TypeAssert <Stringer> t21
+	t23 = MakeClosure <func() string> (Stringer).String$bound t21
+	t24 = Call <string> t23
+	t25 = HeapAlloc <*[1]string>
+	t26 = IndexAddr <*string> t25 t3
+	Store {string} t26 t24
+	t28 = Slice <[]string> t25 <nil> <nil> <nil>
+	t29 = Call <[]string> append t16 t28
+	Jump → b2
+
+b4: ← b2 # rangeindex.done
+	t31 = Sigma <[]string> [b2] t9
+	Jump → b1
+
+# Name: stringify$generic#0
+# Synthetic: generic
+func stringify$generic#0(s []command-line-arguments.myint) (ret []string):
+b0: # entry
+	t1 = Parameter <[]command-line-arguments.myint> {s}
+	t2 = ChangeType <[]T> t1
+	t3 = Call <[]string> command-line-arguments.stringify command-line-arguments.myint t2
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t3
+
+# Name: stringify2$generic#0
+# Synthetic: generic
+func stringify2$generic#0(s []command-line-arguments.myint) (ret []string):
+b0: # entry
+	t1 = Parameter <[]command-line-arguments.myint> {s}
+	t2 = ChangeType <[]T> t1
+	t3 = Call <[]string> command-line-arguments.stringify2 command-line-arguments.myint t2
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t3
+
+# Name: stringify3$generic#0
+# Synthetic: generic
+func stringify3$generic#0(s []command-line-arguments.myint) (ret []string):
+b0: # entry
+	t1 = Parameter <[]command-line-arguments.myint> {s}
+	t2 = ChangeType <[]T> t1
+	t3 = Call <[]string> command-line-arguments.stringify3 command-line-arguments.myint t2
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t3
+
+# Name: command-line-arguments.main
+# Package: command-line-arguments
+func main():
+b0: # entry
+	t1 = Const <int> {0}
+	t2 = Const <myint> {1}
+	t3 = Const <int> {1}
+	t4 = Const <myint> {2}
+	t5 = Const <int> {2}
+	t6 = Const <myint> {3}
+	t7 = Const <string> {"1"}
+	t8 = Const <string> {"2"}
+	t9 = Const <string> {"3"}
+	t10 = Const <string> {"got %s, want %s"}
+	t11 = Const <string> {"got %s, want %s"}
+	t12 = Const <string> {"got %s, want %s"}
+	t13 = HeapAlloc <*[3]myint>
+	t14 = IndexAddr <*myint> t13 t1
+	Store {command-line-arguments.myint} t14 t2
+	t16 = IndexAddr <*myint> t13 t3
+	Store {command-line-arguments.myint} t16 t4
+	t18 = IndexAddr <*myint> t13 t5
+	Store {command-line-arguments.myint} t18 t6
+	t20 = Slice <[]myint> t13 <nil> <nil> <nil>
+	t21 = Call <[]string> stringify$generic#0 t20
+	t22 = HeapAlloc <*[3]string>
+	t23 = IndexAddr <*string> t22 t1
+	Store {string} t23 t7
+	t25 = IndexAddr <*string> t22 t3
+	Store {string} t25 t8
+	t27 = IndexAddr <*string> t22 t5
+	Store {string} t27 t9
+	t29 = Slice <[]string> t22 <nil> <nil> <nil>
+	t30 = MakeInterface <any> t21
+	t31 = MakeInterface <any> t29
+	t32 = Call <bool> reflect.DeepEqual t30 t31
+	If t32 → b3 b2
+
+b1: ← b2 b4 b6 b5 # exit
+	Return
+
+b2: ← b0 # if.then
+	t35 = Sigma <[]string> [b0] t21
+	t36 = Sigma <[]string> [b0] t29
+	t37 = HeapAlloc <*[2]any>
+	t38 = IndexAddr <*any> t37 t1
+	t39 = MakeInterface <any> t35
+	Store {any} t38 t39
+	t41 = IndexAddr <*any> t37 t3
+	t42 = MakeInterface <any> t36
+	Store {any} t41 t42
+	t44 = Slice <[]any> t37 <nil> <nil> <nil>
+	t45 = Call <string> fmt.Sprintf t10 t44
+	t46 = MakeInterface <interface{}> t45
+	Panic t46 → b1
+
+b3: ← b0 # if.done
+	t48 = Sigma <[]myint> [b0] t20
+	t49 = Sigma <[]string> [b0] t29
+	t50 = Call <[]string> stringify2$generic#0 t48
+	t51 = MakeInterface <any> t50
+	t52 = MakeInterface <any> t49
+	t53 = Call <bool> reflect.DeepEqual t51 t52
+	If t53 → b5 b4
+
+b4: ← b3 # if.then
+	t55 = Sigma <[]string> [b3] t50
+	t56 = Sigma <[]string> [b3] t49
+	t57 = HeapAlloc <*[2]any>
+	t58 = IndexAddr <*any> t57 t1
+	t59 = MakeInterface <any> t55
+	Store {any} t58 t59
+	t61 = IndexAddr <*any> t57 t3
+	t62 = MakeInterface <any> t56
+	Store {any} t61 t62
+	t64 = Slice <[]any> t57 <nil> <nil> <nil>
+	t65 = Call <string> fmt.Sprintf t11 t64
+	t66 = MakeInterface <interface{}> t65
+	Panic t66 → b1
+
+b5: ← b3 # if.done
+	t68 = Sigma <[]myint> [b3] t48
+	t69 = Sigma <[]string> [b3] t49
+	t70 = Call <[]string> stringify3$generic#0 t68
+	t71 = MakeInterface <any> t70
+	t72 = MakeInterface <any> t69
+	t73 = Call <bool> reflect.DeepEqual t71 t72
+	If t73 → b1 b6
+
+b6: ← b5 # if.then
+	t75 = Sigma <[]string> [b5] t70
+	t76 = Sigma <[]string> [b5] t69
+	t77 = HeapAlloc <*[2]any>
+	t78 = IndexAddr <*any> t77 t1
+	t79 = MakeInterface <any> t75
+	Store {any} t78 t79
+	t81 = IndexAddr <*any> t77 t3
+	t82 = MakeInterface <any> t76
+	Store {any} t81 t82
+	t84 = Slice <[]any> t77 <nil> <nil> <nil>
+	t85 = Call <string> fmt.Sprintf t12 t84
+	t86 = MakeInterface <interface{}> t85
+	Panic t86 → b1
+
+# Name: command-line-arguments.init
+# Package: command-line-arguments
+# Synthetic: package initializer
+func init():
+b0: # entry
+	t1 = Const <bool> {true}
+	t2 = Load <bool> init$guard
+	If t2 → b1 b2
+
+b1: ← b0 b2 # exit
+	Return
+
+b2: ← b0 # init.start
+	Store {bool} init$guard t1
+	t6 = Call <()> fmt.init
+	t7 = Call <()> reflect.init
+	t8 = Call <()> strconv.init
+	Jump → b1

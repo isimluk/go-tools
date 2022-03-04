@@ -10,9 +10,9 @@ import (
 	"encoding/json"
 )
 
-type A[T any] struct {
+type A[a any] struct {
 	F1 string `json:"t1"`
-	F2 T      `json:"t2"`
+	F2 a      `json:"t2"`
 	B  B      `json:"t3"`
 }
 
@@ -20,9 +20,9 @@ type B struct {
 	F4 int `json:"t4"`
 }
 
-func a[T any]() {
+func a[b any]() {
 	data := `{"t1":"1","t2":2,"t3":{"t4":4}}`
-	a1 := A[T]{}
+	a1 := A[b]{}
 	if err := json.Unmarshal([]byte(data), &a1); err != nil {
 		panic(err)
 	}

@@ -11,7 +11,7 @@ import (
 	"log"
 )
 
-func try[T any](v T, err error) T {
+func try[a any](v a, err error) a {
 	if err != nil {
 		panic(err)
 	}

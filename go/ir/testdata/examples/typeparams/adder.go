@@ -24,6 +24,6 @@ func main() {
 		panic(fmt.Sprintf("got %d, want %d", got, want))
 	}
 	if got, want := Add("ab", "cd"), "abcd"; got != want {
-		panic(fmt.Sprintf("got %d, want %d", got, want))
+		panic(fmt.Sprintf("got %s, want %s", got, want))
 	}
 }

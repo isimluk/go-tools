@@ -20,11 +20,11 @@ type value[T C] struct {
 	val T
 }
 
-func (v *value[T]) test(def T) bool {
+func (v *value[a]) test(def a) bool {
 	return (v.val == def)
 }
 
-func (v *value[T]) get(def T) T {
+func (v *value[b]) get(def b) b {
 	var c value[int]
 	if c.test(32) {
 		return def
@@ -38,6 +38,6 @@ func (v *value[T]) get(def T) T {
 func main() {
 	var s value[string]
 	if got, want := s.get("ab"), ""; got != want {
-		panic(fmt.Sprintf("get() == %d, want %d", got, want))
+		panic(fmt.Sprintf("get() == %s, want %s", got, want))
 	}
 }

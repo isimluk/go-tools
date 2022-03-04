@@ -13,11 +13,11 @@ type MyByte byte
 
 type MyRune rune
 
-func f[T []MyByte](x T) string {
+func f[a []MyByte](x a) string {
 	return string(x)
 }
 
-func g[T []MyRune](x T) string {
+func g[b []MyRune](x b) string {
 	return string(x)
 }
 

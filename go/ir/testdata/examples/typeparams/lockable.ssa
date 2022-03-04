@@ -1,0 +1,165 @@
+# Name: (*command-line-arguments.Lockable[b]).get
+# Package: command-line-arguments
+func (t1 *Lockable[b]) get() b:
+b0: # entry
+	t1 = Parameter <*Lockable[b]> {l}
+	t2 = FieldAddr <*sync.Mutex> [1] (mu) t1
+	t3 = Call <()> (*sync.Mutex).Lock t2
+	t4 = FieldAddr <*sync.Mutex> [1] (mu) t1
+	Defer (*sync.Mutex).Unlock t4
+	t6 = FieldAddr <*b> [0] (x) t1
+	t7 = Load <b> t6
+	Jump → b1
+
+b1: ← b0 # exit
+	RunDefers
+	Return t7
+
+# Name: (*command-line-arguments.Lockable[c]).set
+# Package: command-line-arguments
+func (t1 *Lockable[c]) set(v c):
+b0: # entry
+	t1 = Parameter <*Lockable[c]> {l}
+	t2 = Parameter <c> {v}
+	t3 = FieldAddr <*sync.Mutex> [1] (mu) t1
+	t4 = Call <()> (*sync.Mutex).Lock t3
+	t5 = FieldAddr <*sync.Mutex> [1] (mu) t1
+	Defer (*sync.Mutex).Unlock t5
+	t7 = FieldAddr <*c> [0] (x) t1
+	Store {c} t7 t2
+	Jump → b1
+
+b1: ← b0 # exit
+	RunDefers
+	Return
+
+# Name: (*command-line-arguments.Lockable[string]).get
+# Synthetic: generic
+func (t1 *command-line-arguments.Lockable[string]) get() string:
+b0: # entry
+	t1 = Parameter <*command-line-arguments.Lockable[string]> {l}
+	t2 = ChangeType <*command-line-arguments.Lockable[b]> t1
+	t3 = Call <b> (*command-line-arguments.Lockable[b]).get string t2
+	t4 = ChangeType <string> t3
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t4
+
+# Name: (*command-line-arguments.Lockable[string]).set
+# Synthetic: generic
+func (t1 *command-line-arguments.Lockable[string]) set(v string):
+b0: # entry
+	t1 = Parameter <*command-line-arguments.Lockable[string]> {l}
+	t2 = Parameter <string> {v}
+	t3 = ChangeType <*command-line-arguments.Lockable[c]> t1
+	t4 = ChangeType <c> t2
+	t5 = Call <()> (*command-line-arguments.Lockable[c]).set string t3 t4
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: (*command-line-arguments.Lockable[int]).get
+# Synthetic: generic
+func (t1 *command-line-arguments.Lockable[int]) get() int:
+b0: # entry
+	t1 = Parameter <*command-line-arguments.Lockable[int]> {l}
+	t2 = ChangeType <*command-line-arguments.Lockable[b]> t1
+	t3 = Call <b> (*command-line-arguments.Lockable[b]).get int t2
+	t4 = ChangeType <int> t3
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t4
+
+# Name: (*command-line-arguments.Lockable[int]).set
+# Synthetic: generic
+func (t1 *command-line-arguments.Lockable[int]) set(v int):
+b0: # entry
+	t1 = Parameter <*command-line-arguments.Lockable[int]> {l}
+	t2 = Parameter <int> {v}
+	t3 = ChangeType <*command-line-arguments.Lockable[c]> t1
+	t4 = ChangeType <c> t2
+	t5 = Call <()> (*command-line-arguments.Lockable[c]).set int t3 t4
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: command-line-arguments.main
+# Package: command-line-arguments
+func main():
+b0: # entry
+	t1 = Const <string> {"a"}
+	t2 = Const <string> {"a"}
+	t3 = Const <string> {"b"}
+	t4 = Const <string> {"b"}
+	t5 = Const <int> {1}
+	t6 = Const <int> {2}
+	t7 = HeapAlloc <*Lockable[string]>
+	t8 = FieldAddr <*string> [0] (x) t7
+	Store {string} t8 t1
+	t10 = Call <string> (*Lockable[string]).get t7
+	t11 = BinOp <bool> {!=} t10 t2
+	If t11 → b2 b3
+
+b1: ← b2 b4 b6 b8 b7 # exit
+	Return
+
+b2: ← b0 # if.then
+	t14 = Sigma <string> [b0] t10
+	t15 = MakeInterface <interface{}> t14
+	Panic t15 → b1
+
+b3: ← b0 # if.done
+	t17 = Call <()> (*Lockable[string]).set t7 t3
+	t18 = Call <string> (*Lockable[string]).get t7
+	t19 = BinOp <bool> {!=} t18 t4
+	If t19 → b4 b5
+
+b4: ← b3 # if.then
+	t21 = Sigma <string> [b3] t18
+	t22 = MakeInterface <interface{}> t21
+	Panic t22 → b1
+
+b5: ← b3 # if.done
+	t24 = HeapAlloc <*Lockable[int]>
+	t25 = FieldAddr <*int> [0] (x) t24
+	Store {int} t25 t5
+	t27 = Call <int> (*Lockable[int]).get t24
+	t28 = BinOp <bool> {!=} t27 t5
+	If t28 → b6 b7
+
+b6: ← b5 # if.then
+	t30 = Sigma <int> [b5] t27
+	t31 = MakeInterface <interface{}> t30
+	Panic t31 → b1
+
+b7: ← b5 # if.done
+	t33 = Call <()> (*Lockable[int]).set t24 t6
+	t34 = Call <int> (*Lockable[int]).get t24
+	t35 = BinOp <bool> {!=} t34 t6
+	If t35 → b8 b1
+
+b8: ← b7 # if.then
+	t37 = Sigma <int> [b7] t34
+	t38 = MakeInterface <interface{}> t37
+	Panic t38 → b1
+
+# Name: command-line-arguments.init
+# Package: command-line-arguments
+# Synthetic: package initializer
+func init():
+b0: # entry
+	t1 = Const <bool> {true}
+	t2 = Load <bool> init$guard
+	If t2 → b1 b2
+
+b1: ← b0 b2 # exit
+	Return
+
+b2: ← b0 # init.start
+	Store {bool} init$guard t1
+	t6 = Call <()> sync.init
+	Jump → b1

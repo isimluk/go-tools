@@ -1,0 +1,141 @@
+# Name: (*command-line-arguments.StringableList[T command-line-arguments.Stringer]).String
+# Synthetic: wrapper
+func (t3 *command-line-arguments.StringableList[T command-line-arguments.Stringer]) String() string:
+b0: # entry
+	t1 = Const <string> {"command-line-argu..."}
+	t2 = Const <string> {"String"}
+	t3 = Parameter <*command-line-arguments.StringableList[T command-line-arguments.Stringer]> {s}
+	t4 = Call <*command-line-arguments.StringableList[T command-line-arguments.Stringer]> ir:wrapnilchk t3 t1 t2
+	t5 = Load <command-line-arguments.StringableList[T command-line-arguments.Stringer]> t4
+	t6 = Call <string> (command-line-arguments.StringableList[T]).String t5
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t6
+
+# Name: (command-line-arguments.StringableList[T]).String
+# Package: command-line-arguments
+func (t5 StringableList[T]) String() string:
+b0: # entry
+	t1 = Const <int> {-1}
+	t2 = Const <int> {1}
+	t3 = Const <int> {0}
+	t4 = Const <string> {", "}
+	t5 = Parameter <StringableList[T]> {s}
+	t6 = HeapAlloc <*strings.Builder>
+	t7 = Call <int> len t5
+	Jump → b2
+
+b1: ← b4 # exit
+	Return t23
+
+b2: ← b0 b6 # rangeindex.loop
+	t10 = Phi <command-line-arguments.StringableList[T]> 0:t5 6:t16
+	t11 = Phi <int> 0:t7 6:t17
+	t12 = Phi <int> 0:t1 6:t18
+	t13 = BinOp <int> {+} t12 t2
+	t14 = BinOp <bool> {<} t13 t11
+	If t14 → b3 b4
+
+b3: ← b2 # rangeindex.body
+	t16 = Sigma <StringableList[T]> [b2] t10
+	t17 = Sigma <int> [b2] t11
+	t18 = Sigma <int> [b2] t13
+	t19 = IndexAddr <*T> t16 t18
+	t20 = Load <T> t19
+	t21 = BinOp <bool> {>} t18 t3
+	If t21 → b5 b6
+
+b4: ← b2 # rangeindex.done
+	t23 = Call <string> (*strings.Builder).String t6
+	Jump → b1
+
+b5: ← b3 # if.then
+	t25 = Call <(int, error)> (*strings.Builder).WriteString t6 t4
+	Jump → b6
+
+b6: ← b3 b5 # if.done
+	t27 = CallInvoke <string> t20.String
+	t28 = Call <(int, error)> (*strings.Builder).WriteString t6 t27
+	Jump → b2
+
+# Name: (command-line-arguments.myint).String
+# Package: command-line-arguments
+func (t1 myint) String() string:
+b0: # entry
+	t1 = Parameter <myint> {a}
+	t2 = ChangeType <int> t1
+	t3 = Call <string> strconv.Itoa t2
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t3
+
+# Name: (command-line-arguments.StringableList[command-line-arguments.myint]).String
+# Synthetic: generic
+func (t1 command-line-arguments.StringableList[command-line-arguments.myint]) String() string:
+b0: # entry
+	t1 = Parameter <command-line-arguments.StringableList[command-line-arguments.myint]> {s}
+	t2 = ChangeType <command-line-arguments.StringableList[T]> t1
+	t3 = Call <string> (command-line-arguments.StringableList[T]).String command-line-arguments.myint t2
+	Jump → b1
+
+b1: ← b0 # exit
+	Return t3
+
+# Name: command-line-arguments.main
+# Package: command-line-arguments
+func main():
+b0: # entry
+	t1 = Const <int> {0}
+	t2 = Const <myint> {1}
+	t3 = Const <int> {1}
+	t4 = Const <myint> {2}
+	t5 = Const <string> {"1, 2"}
+	t6 = Const <string> {"got %s, want %s"}
+	t7 = HeapAlloc <*[2]myint>
+	t8 = IndexAddr <*myint> t7 t1
+	Store {command-line-arguments.myint} t8 t2
+	t10 = IndexAddr <*myint> t7 t3
+	Store {command-line-arguments.myint} t10 t4
+	t12 = Slice <StringableList[myint]> t7 <nil> <nil> <nil>
+	t13 = Call <string> (StringableList[myint]).String t12
+	t14 = BinOp <bool> {!=} t13 t5
+	If t14 → b2 b1
+
+b1: ← b2 b0 # exit
+	Return
+
+b2: ← b0 # if.then
+	t17 = Sigma <string> [b0] t13
+	t18 = Sigma <string> [b0] t5
+	t19 = HeapAlloc <*[2]any>
+	t20 = IndexAddr <*any> t19 t1
+	t21 = MakeInterface <any> t17
+	Store {any} t20 t21
+	t23 = IndexAddr <*any> t19 t3
+	t24 = MakeInterface <any> t18
+	Store {any} t23 t24
+	t26 = Slice <[]any> t19 <nil> <nil> <nil>
+	t27 = Call <string> fmt.Sprintf t6 t26
+	t28 = MakeInterface <interface{}> t27
+	Panic t28 → b1
+
+# Name: command-line-arguments.init
+# Package: command-line-arguments
+# Synthetic: package initializer
+func init():
+b0: # entry
+	t1 = Const <bool> {true}
+	t2 = Load <bool> init$guard
+	If t2 → b1 b2
+
+b1: ← b0 b2 # exit
+	Return
+
+b2: ← b0 # init.start
+	Store {bool} init$guard t1
+	t6 = Call <()> fmt.init
+	t7 = Call <()> strconv.init
+	t8 = Call <()> strings.init
+	Jump → b1

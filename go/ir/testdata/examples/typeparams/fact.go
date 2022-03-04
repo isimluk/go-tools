@@ -27,6 +27,6 @@ func main() {
 	}
 
 	if got := fact(5.0); got != want {
-		panic(fmt.Sprintf("got %f, want %f", got, want))
+		panic(fmt.Sprintf("got %f, want %d", got, want))
 	}
 }

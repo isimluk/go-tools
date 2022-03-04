@@ -350,7 +350,7 @@ func TestExclusiveTry() {
 		defer wg.Done()
 		_, ok := ex.TryAcquire()
 		if ok {
-			panic(fmt.Sprintf("TryAcquire succeeded unexpectedly"))
+			panic("TryAcquire succeeded unexpectedly")
 		}
 	}()
 	wg.Wait()
@@ -359,7 +359,7 @@ func TestExclusiveTry() {
 
 	p, ok = ex.TryAcquire()
 	if !ok {
-		panic(fmt.Sprintf("TryAcquire failed"))
+		panic("TryAcquire failed")
 	}
 }
 
@@ -371,7 +371,7 @@ func TestRanger() {
 		// Receive one value then exit.
 		v, ok := r.Next(ctx)
 		if !ok {
-			panic(fmt.Sprintf("did not receive any values"))
+			panic("did not receive any values")
 		} else if v != 1 {
 			panic(fmt.Sprintf("received %d, want 1", v))
 		}
@@ -382,11 +382,11 @@ func TestRanger() {
 	go func() {
 		defer close(c2)
 		if !s.Send(ctx, 1) {
-			panic(fmt.Sprintf("Send failed unexpectedly"))
+			panic("Send failed unexpectedly")
 		}
 		close(c1)
 		if s.Send(ctx, 2) {
-			panic(fmt.Sprintf("Send succeeded unexpectedly"))
+			panic("Send succeeded unexpectedly")
 		}
 	}()
 

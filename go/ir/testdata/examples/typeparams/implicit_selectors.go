@@ -6,11 +6,11 @@ type E struct {
 	val int
 }
 
-func fn1[T *S,](x T) {
+func fn1[a *S,](x a) {
 	x.val = 5
 }
 
-func fn2[T S]() {
-	var x T
+func fn2[b S]() {
+	var x b
 	x.val = 5
 }

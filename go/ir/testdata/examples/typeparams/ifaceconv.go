@@ -14,18 +14,18 @@ import "fmt"
 
 type E interface{}
 
-func f[T any](x T) interface{} {
+func f[a any](x a) interface{} {
 	var i interface{} = x
 	return i
 }
 
-func fs[T any](x T) interface{} {
-	y := []T{x}
+func fs[b any](x b) interface{} {
+	y := []b{x}
 	var i interface{} = y
 	return i
 }
 
-func g[T any](x T) E {
+func g[c any](x c) E {
 	var i E = x
 	return i
 }
@@ -40,21 +40,21 @@ func (x myInt) foo() int {
 	return int(x + 1)
 }
 
-func h[T C](x T) interface{ foo() int } {
+func h[d C](x d) interface{ foo() int } {
 	var i interface{ foo() int } = x
 	return i
 }
-func i[T C](x T) C {
+func i[e C](x e) C {
 	var i C = x // conversion in assignment
 	return i
 }
 
-func j[T C](t T) C {
+func j[f C](t f) C {
 	return C(t) // explicit conversion
 }
 
-func js[T any](x T) interface{} {
-	y := []T{x}
+func js[g any](x g) interface{} {
+	y := []g{x}
 	return interface{}(y)
 }
 

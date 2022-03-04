@@ -27,7 +27,7 @@ func main() {
 	cmd.AddAnalyzers(simple.Analyzers...)
 	cmd.AddAnalyzers(staticcheck.Analyzers...)
 	cmd.AddAnalyzers(stylecheck.Analyzers...)
-	cmd.AddAnalyzers(unused.Analyzer)
+	cmd.AddAnalyzers(unused.Analyzer) // XXX
 
 	if *qf {
 		cmd.AddAnalyzers(quickfix.Analyzers...)

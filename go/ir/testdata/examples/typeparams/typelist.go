@@ -13,57 +13,57 @@ package p
 
 // Assignability of an unnamed pointer type to a type parameter that
 // has a matching underlying type.
-func fn0[T interface{}, PT interface{ ~*T }](x T) PT {
+func fn0[a interface{}, b interface{ ~*a }](x a) b {
 	return &x
 }
 
 // Indexing of generic types containing type parameters in their type list:
-func at[T interface{ ~[]E }, E any](x T, i int) E {
+func at[c interface{ ~[]d }, d any](x c, i int) d {
 	return x[i]
 }
 
 // A generic type inside a function acts like a named type. Its underlying
 // type is itself, its "operational type" is defined by the type list in
 // the tybe bound, if any.
-func fn1[T interface{ ~int }](x T) {
+func fn1[e interface{ ~int }](x e) {
 	var _ int = int(x)
-	var _ T = 42
-	var _ T = T(myint(42))
+	var _ e = 42
+	var _ e = e(myint(42))
 }
 
 // TODO: put this type declaration back inside the above function when issue 47631 is fixed.
 type myint int
 
 // Indexing a generic type which has a an array as core type.
-func fn2[T interface{ ~[10]int }](x T) {
+func fn2[f interface{ ~[10]int }](x f) {
 	_ = x[9] // ok
 }
 
 // Dereference of a generic type which has a pointer as core type.
-func fn3[T interface{ ~*int }](p T) int {
+func fn3[g interface{ ~*int }](p g) int {
 	return *p
 }
 
 // Channel send and receive on a generic type which has a channel as core type.
-func fn4[T interface{ ~chan int }](ch T) int {
+func fn4[h interface{ ~chan int }](ch h) int {
 	// This would deadlock if executed (but ok for a compile test)
 	ch <- 0
 	return <-ch
 }
 
 // Calling of a generic type which has a function as core type.
-func fn5[T interface{ ~func() }](f T) {
+func fn5[i interface{ ~func() }](f i) {
 	f()
 	go f()
 }
 
 // Same, but function has a parameter and return value.
-func fn6[T interface{ ~func(string) int }](f T) int {
+func fn6[j interface{ ~func(string) int }](f j) int {
 	return f("hello")
 }
 
 // Map access of a generic type which has a map as core type.
-func fn7[V any, T interface{ ~map[string]V }](p T) V {
+func fn7[k any, l interface{ ~map[string]k }](p l) k {
 	return p["test"]
 }
 
@@ -89,7 +89,7 @@ func f1x() {
 }
 */
 
-func f2[A any, B interface{ ~[]A }](_ A, _ B) {}
+func f2[m any, n interface{ ~[]m }](_ m, _ n) {}
 func f2x() {
 	f := f2[byte]
 	f(byte(0), []byte{})
@@ -109,7 +109,7 @@ func f3x() {
 }
 */
 
-func f4[A any, B interface{ ~[]C }, C interface{ ~*A }](_ A, _ B, c C) {}
+func f4[o any, p interface{ ~[]q }, q interface{ ~*o }](_ o, _ p, c q) {}
 func f4x() {
 	f := f4[int]
 	var x int
@@ -117,12 +117,12 @@ func f4x() {
 	f4(x, []*int{}, &x)
 }
 
-func f5[A interface {
+func f5[r interface {
 	~struct {
-		b B
-		c C
+		b s
+		c t
 	}
-}, B any, C interface{ ~*B }](x B) A {
+}, s any, t interface{ ~*s }](x s) r {
 	panic(0)
 }
 func f5x() {
@@ -131,7 +131,7 @@ func f5x() {
 	var _ float64 = *x.c
 }
 
-func f6[A any, B interface{ ~struct{ f []A } }](B) A { panic(0) }
+func f6[v any, w interface{ ~struct{ f []v } }](w) v { panic(0) }
 func f6x() {
 	x := f6(struct{ f []string }{})
 	var _ string = x

@@ -12,7 +12,7 @@ type sliceOf[E any] interface {
 	~[]E
 }
 
-func _Append[S sliceOf[T], T any](s S, t ...T) S {
+func _Append[a sliceOf[b], b any](s a, t ...b) a {
 	return append(s, t...)
 }
 

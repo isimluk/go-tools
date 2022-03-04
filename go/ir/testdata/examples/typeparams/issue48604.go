@@ -6,18 +6,18 @@
 
 package main
 
-type Foo[T any] interface {
-	CreateBar() Bar[T]
+type Foo[a any] interface {
+	CreateBar() Bar[a]
 }
 
-type Bar[T any] func() Bar[T]
+type Bar[b any] func() Bar[b]
 
-func (f Bar[T]) CreateBar() Bar[T] {
+func (f Bar[c]) CreateBar() Bar[c] {
 	return f
 }
 
-func abc[R any]() {
-	var _ Foo[R] = Bar[R](nil)()
+func abc[d any]() {
+	var _ Foo[d] = Bar[d](nil)()
 }
 
 func main() {

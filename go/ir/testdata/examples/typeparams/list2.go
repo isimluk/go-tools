@@ -488,10 +488,10 @@ func TestIssue6349() {
 		panic(fmt.Sprintf("e.value = %d, want 1", e.Value))
 	}
 	if e.Next() != nil {
-		panic(fmt.Sprintf("e.Next() != nil"))
+		panic("e.Next() != nil")
 	}
 	if e.Prev() != nil {
-		panic(fmt.Sprintf("e.Prev() != nil"))
+		panic("e.Prev() != nil")
 	}
 }
 

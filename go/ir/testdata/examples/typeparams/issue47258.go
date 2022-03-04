@@ -24,9 +24,9 @@ func main() {
 		panic(fmt.Sprintf("got %d, want %d", got, want))
 	}
 	if got, want := inc(float64(5)), float64(6.0); got != want {
-		panic(fmt.Sprintf("got %d, want %d", got, want))
+		panic(fmt.Sprintf("got %f, want %f", got, want))
 	}
 	if got, want := inc(complex64(5)), complex64(6.0); got != want {
-		panic(fmt.Sprintf("got %d, want %d", got, want))
+		panic(fmt.Sprintf("got %v, want %v", got, want))
 	}
 }

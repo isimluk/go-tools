@@ -1,10 +1,10 @@
 # Name: command-line-arguments.get
 # Package: command-line-arguments
-func get[T any](v *value[T]) T:
+func get[b any](v *value[b]) b:
 b0: # entry
-	t1 = Parameter <*value[T]> {v}
-	t2 = FieldAddr <*T> [0] (val) t1
-	t3 = Load <T> t2
+	t1 = Parameter <*value[b]> {v}
+	t2 = FieldAddr <*b> [0] (val) t1
+	t3 = Load <b> t2
 	Jump → b1
 
 b1: ← b0 # exit
@@ -12,37 +12,37 @@ b1: ← b0 # exit
 
 # Name: command-line-arguments.set
 # Package: command-line-arguments
-func set[T any](v *value[T], val T):
+func set[c any](v *value[c], val c):
 b0: # entry
-	t1 = Parameter <*value[T]> {v}
-	t2 = Parameter <T> {val}
-	t3 = FieldAddr <*T> [0] (val) t1
-	Store {T} t3 t2
+	t1 = Parameter <*value[c]> {v}
+	t2 = Parameter <c> {val}
+	t3 = FieldAddr <*c> [0] (val) t1
+	Store {c} t3 t2
 	Jump → b1
 
 b1: ← b0 # exit
 	Return
 
-# Name: (*command-line-arguments.value[T]).set
+# Name: (*command-line-arguments.value[d]).set
 # Package: command-line-arguments
-func (t1 *value[T]) set(val T):
+func (t1 *value[d]) set(val d):
 b0: # entry
-	t1 = Parameter <*value[T]> {v}
-	t2 = Parameter <T> {val}
-	t3 = FieldAddr <*T> [0] (val) t1
-	Store {T} t3 t2
+	t1 = Parameter <*value[d]> {v}
+	t2 = Parameter <d> {val}
+	t3 = FieldAddr <*d> [0] (val) t1
+	Store {d} t3 t2
 	Jump → b1
 
 b1: ← b0 # exit
 	Return
 
-# Name: (*command-line-arguments.value[T]).get
+# Name: (*command-line-arguments.value[e]).get
 # Package: command-line-arguments
-func (t1 *value[T]) get() T:
+func (t1 *value[e]) get() e:
 b0: # entry
-	t1 = Parameter <*value[T]> {v}
-	t2 = FieldAddr <*T> [0] (val) t1
-	t3 = Load <T> t2
+	t1 = Parameter <*value[e]> {v}
+	t2 = FieldAddr <*e> [0] (val) t1
+	t3 = Load <e> t2
 	Jump → b1
 
 b1: ← b0 # exit
@@ -54,8 +54,8 @@ func set$generic#0(v *command-line-arguments.value[int], val int):
 b0: # entry
 	t1 = Parameter <*command-line-arguments.value[int]> {v}
 	t2 = Parameter <int> {val}
-	t3 = ChangeType <*command-line-arguments.value[T]> t1
-	t4 = ChangeType <T> t2
+	t3 = ChangeType <*command-line-arguments.value[c]> t1
+	t4 = ChangeType <c> t2
 	t5 = Call <()> command-line-arguments.set int t3 t4
 	Jump → b1
 
@@ -67,8 +67,8 @@ b1: ← b0 # exit
 func get$generic#0(v *command-line-arguments.value[int]) int:
 b0: # entry
 	t1 = Parameter <*command-line-arguments.value[int]> {v}
-	t2 = ChangeType <*command-line-arguments.value[T]> t1
-	t3 = Call <T> command-line-arguments.get int t2
+	t2 = ChangeType <*command-line-arguments.value[b]> t1
+	t3 = Call <b> command-line-arguments.get int t2
 	t4 = ChangeType <int> t3
 	Jump → b1
 
@@ -81,9 +81,9 @@ func (t1 *command-line-arguments.value[int]) set(val int):
 b0: # entry
 	t1 = Parameter <*command-line-arguments.value[int]> {v}
 	t2 = Parameter <int> {val}
-	t3 = ChangeType <*command-line-arguments.value[T]> t1
-	t4 = ChangeType <T> t2
-	t5 = Call <()> (*command-line-arguments.value[T]).set int t3 t4
+	t3 = ChangeType <*command-line-arguments.value[d]> t1
+	t4 = ChangeType <d> t2
+	t5 = Call <()> (*command-line-arguments.value[d]).set int t3 t4
 	Jump → b1
 
 b1: ← b0 # exit
@@ -94,8 +94,8 @@ b1: ← b0 # exit
 func (t1 *command-line-arguments.value[int]) get() int:
 b0: # entry
 	t1 = Parameter <*command-line-arguments.value[int]> {v}
-	t2 = ChangeType <*command-line-arguments.value[T]> t1
-	t3 = Call <T> (*command-line-arguments.value[T]).get int t2
+	t2 = ChangeType <*command-line-arguments.value[e]> t1
+	t3 = Call <e> (*command-line-arguments.value[e]).get int t2
 	t4 = ChangeType <int> t3
 	Jump → b1
 
@@ -108,8 +108,8 @@ func set$generic#1(v *command-line-arguments.value[string], val string):
 b0: # entry
 	t1 = Parameter <*command-line-arguments.value[string]> {v}
 	t2 = Parameter <string> {val}
-	t3 = ChangeType <*command-line-arguments.value[T]> t1
-	t4 = ChangeType <T> t2
+	t3 = ChangeType <*command-line-arguments.value[c]> t1
+	t4 = ChangeType <c> t2
 	t5 = Call <()> command-line-arguments.set string t3 t4
 	Jump → b1
 
@@ -121,8 +121,8 @@ b1: ← b0 # exit
 func get$generic#1(v *command-line-arguments.value[string]) string:
 b0: # entry
 	t1 = Parameter <*command-line-arguments.value[string]> {v}
-	t2 = ChangeType <*command-line-arguments.value[T]> t1
-	t3 = Call <T> command-line-arguments.get string t2
+	t2 = ChangeType <*command-line-arguments.value[b]> t1
+	t3 = Call <b> command-line-arguments.get string t2
 	t4 = ChangeType <string> t3
 	Jump → b1
 
@@ -135,9 +135,9 @@ func (t1 *command-line-arguments.value[string]) set(val string):
 b0: # entry
 	t1 = Parameter <*command-line-arguments.value[string]> {v}
 	t2 = Parameter <string> {val}
-	t3 = ChangeType <*command-line-arguments.value[T]> t1
-	t4 = ChangeType <T> t2
-	t5 = Call <()> (*command-line-arguments.value[T]).set string t3 t4
+	t3 = ChangeType <*command-line-arguments.value[d]> t1
+	t4 = ChangeType <d> t2
+	t5 = Call <()> (*command-line-arguments.value[d]).set string t3 t4
 	Jump → b1
 
 b1: ← b0 # exit
@@ -148,8 +148,8 @@ b1: ← b0 # exit
 func (t1 *command-line-arguments.value[string]) get() string:
 b0: # entry
 	t1 = Parameter <*command-line-arguments.value[string]> {v}
-	t2 = ChangeType <*command-line-arguments.value[T]> t1
-	t3 = Call <T> (*command-line-arguments.value[T]).get string t2
+	t2 = ChangeType <*command-line-arguments.value[e]> t1
+	t3 = Call <e> (*command-line-arguments.value[e]).get string t2
 	t4 = ChangeType <string> t3
 	Jump → b1
 

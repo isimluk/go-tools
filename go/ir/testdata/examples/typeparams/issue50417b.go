@@ -31,7 +31,7 @@ func f[T C]() T {
 	}
 
 	if got, want := x.b2, "b"; got != want {
-		panic(fmt.Sprintf("got %d, want %d", got, want))
+		panic(fmt.Sprintf("got %s, want %s", got, want))
 	}
 	x.b1 = "y"
 	x.val = 5
@@ -42,7 +42,7 @@ func f[T C]() T {
 func main() {
 	x := f[MyStruct]()
 	if got, want := x.b1, "y"; got != want {
-		panic(fmt.Sprintf("got %d, want %d", got, want))
+		panic(fmt.Sprintf("got %s, want %s", got, want))
 	}
 	if got, want := x.val, 5; got != want {
 		panic(fmt.Sprintf("got %d, want %d", got, want))

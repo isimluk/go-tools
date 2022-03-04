@@ -1,0 +1,88 @@
+# Name: (*command-line-arguments.Foo[d]).Bar
+# Package: command-line-arguments
+func (t1 *Foo[d]) Bar(in ...interface{}):
+b0: # entry
+	t1 = Parameter <*Foo[d]> {b}
+	t2 = Parameter <[]interface{}> {in}
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: (*command-line-arguments.Foo[c]).Bar
+# Synthetic: generic
+func (t1 *command-line-arguments.Foo[c]) Bar(in ...interface{}):
+b0: # entry
+	t1 = Parameter <*command-line-arguments.Foo[c]> {b}
+	t2 = Parameter <[]interface{}> {in}
+	t3 = ChangeType <*command-line-arguments.Foo[d]> t1
+	t4 = Call <()> (*command-line-arguments.Foo[d]).Bar c t3 t2
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: (*command-line-arguments.Foo[c]).Bar$bound
+# Synthetic: bound
+# Free variables:
+#   0:	recv *command-line-arguments.Foo[c]
+func Bar$bound(in ...interface{}):
+b0: # entry
+	t1 = Parameter <[]interface{}> {in}
+	t2 = Call <()> (*command-line-arguments.Foo[c]).Bar recv t1
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: (*command-line-arguments.Foo[c]).Init
+# Package: command-line-arguments
+func (t1 *Foo[c]) Init():
+b0: # entry
+	t1 = Parameter <*Foo[c]> {b}
+	t2 = MakeClosure <func(in ...interface{})> (*Foo[c]).Bar$bound t1
+	t3 = ChangeType <Handler> t2
+	BlankStore t3
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: (*command-line-arguments.Foo[int]).Init
+# Synthetic: generic
+func (t1 *command-line-arguments.Foo[int]) Init():
+b0: # entry
+	t1 = Parameter <*command-line-arguments.Foo[int]> {b}
+	t2 = ChangeType <*command-line-arguments.Foo[c]> t1
+	t3 = Call <()> (*command-line-arguments.Foo[c]).Init int t2
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: command-line-arguments.main
+# Package: command-line-arguments
+func main():
+b0: # entry
+	t1 = HeapAlloc <*Foo[int]>
+	t2 = Call <()> (*Foo[int]).Init t1
+	Jump → b1
+
+b1: ← b0 # exit
+	Return
+
+# Name: command-line-arguments.init
+# Package: command-line-arguments
+# Synthetic: package initializer
+func init():
+b0: # entry
+	t1 = Const <bool> {true}
+	t2 = Load <bool> init$guard
+	If t2 → b1 b2
+
+b1: ← b0 b2 # exit
+	Return
+
+b2: ← b0 # init.start
+	Store {bool} init$guard t1
+	Jump → b1

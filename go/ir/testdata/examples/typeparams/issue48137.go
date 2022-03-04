@@ -6,14 +6,14 @@
 
 package pkg
 
-type Constraint[T any] interface {
-	~func() T
+type Constraint[a any] interface {
+	~func() a
 }
 
-func Foo[T Constraint[T]]() T {
-	var t T
+func Foo[b Constraint[b]]() b {
+	var t b
 
-	t = func() T {
+	t = func() b {
 		return t
 	}
 	return t

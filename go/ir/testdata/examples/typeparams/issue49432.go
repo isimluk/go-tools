@@ -8,11 +8,11 @@ package main
 
 type Handler func(in ...interface{})
 
-type Foo[T any] struct{}
+type Foo[a any] struct{}
 
-func (b *Foo[T]) Bar(in ...interface{}) {}
+func (b *Foo[d]) Bar(in ...interface{}) {}
 
-func (b *Foo[T]) Init() {
+func (b *Foo[c]) Init() {
 	_ = Handler(b.Bar)
 }
 

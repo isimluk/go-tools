@@ -63,8 +63,7 @@ func test1[T any](arg T) {
 	b1.A2.m2(arg)
 	b1.m2(arg)
 
-	var b2 B2[T]
-	b2 = &ImpA2[T]{}
+	var b2 B2[T] = &ImpA2[T]{}
 	b2.m2(arg)
 
 	// a deeper nesting
@@ -102,8 +101,7 @@ func test2() {
 	b1.A2.m2("")
 	b1.m2("")
 
-	var b2 B2[string]
-	b2 = &ImpA2[string]{}
+	var b2 B2[string] = &ImpA2[string]{}
 	b2.m2("")
 
 	// a deeper nesting

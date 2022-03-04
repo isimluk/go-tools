@@ -6,23 +6,23 @@
 
 package main
 
-type value[T any] struct {
-	val T
+type value[a any] struct {
+	val a
 }
 
-func get[T any](v *value[T]) T {
+func get[b any](v *value[b]) b {
 	return v.val
 }
 
-func set[T any](v *value[T], val T) {
+func set[c any](v *value[c], val c) {
 	v.val = val
 }
 
-func (v *value[T]) set(val T) {
+func (v *value[d]) set(val d) {
 	v.val = val
 }
 
-func (v *value[T]) get() T {
+func (v *value[e]) get() e {
 	return v.val
 }
 
