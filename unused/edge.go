@@ -53,4 +53,6 @@ const (
 	edgeVarDecl
 	edgeIgnored
 	edgeSamePointer
+	edgeTypeParam
+	edgeTypeArg
 )
